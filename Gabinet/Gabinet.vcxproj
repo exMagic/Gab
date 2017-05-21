@@ -130,6 +130,14 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Logowanie.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Logowanie.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
