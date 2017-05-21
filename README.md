@@ -1,3 +1,3 @@
 # Gab
-Strefa Kursow
+Strefa Kursow;
 Hello from PC!
