@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace Gabinet {
 
@@ -34,7 +34,15 @@ namespace Gabinet {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  btnZaloguj;
+	private: System::Windows::Forms::Button^  btnAnuluj;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::TextBox^  txtUzytkownik;
+	private: System::Windows::Forms::TextBox^  txtHaslo;
+	protected:
+
+
 	protected:
 
 	private:
@@ -50,29 +58,86 @@ namespace Gabinet {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btnZaloguj = (gcnew System::Windows::Forms::Button());
+			this->btnAnuluj = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->txtUzytkownik = (gcnew System::Windows::Forms::TextBox());
+			this->txtHaslo = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
-			// button1
+			// btnZaloguj
 			// 
-			this->button1->Location = System::Drawing::Point(111, 101);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Hello GitHub";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btnZaloguj->Location = System::Drawing::Point(181, 214);
+			this->btnZaloguj->Name = L"btnZaloguj";
+			this->btnZaloguj->Size = System::Drawing::Size(75, 23);
+			this->btnZaloguj->TabIndex = 0;
+			this->btnZaloguj->Text = L"Zaloguj";
+			this->btnZaloguj->UseVisualStyleBackColor = true;
+			// 
+			// btnAnuluj
+			// 
+			this->btnAnuluj->Location = System::Drawing::Point(28, 214);
+			this->btnAnuluj->Name = L"btnAnuluj";
+			this->btnAnuluj->Size = System::Drawing::Size(75, 23);
+			this->btnAnuluj->TabIndex = 1;
+			this->btnAnuluj->Text = L"Anuluj";
+			this->btnAnuluj->UseVisualStyleBackColor = true;
+			this->btnAnuluj->Click += gcnew System::EventHandler(this, &Logowanie::btnAnuluj_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(28, 54);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(60, 13);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"użytkownik";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(28, 98);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(34, 13);
+			this->label2->TabIndex = 3;
+			this->label2->Text = L"hasło";
+			// 
+			// txtUzytkownik
+			// 
+			this->txtUzytkownik->Location = System::Drawing::Point(116, 47);
+			this->txtUzytkownik->Name = L"txtUzytkownik";
+			this->txtUzytkownik->Size = System::Drawing::Size(140, 20);
+			this->txtUzytkownik->TabIndex = 4;
+			// 
+			// txtHaslo
+			// 
+			this->txtHaslo->Location = System::Drawing::Point(116, 90);
+			this->txtHaslo->Name = L"txtHaslo";
+			this->txtHaslo->PasswordChar = '*';
+			this->txtHaslo->Size = System::Drawing::Size(140, 20);
+			this->txtHaslo->TabIndex = 5;
 			// 
 			// Logowanie
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->txtHaslo);
+			this->Controls->Add(this->txtUzytkownik);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->btnAnuluj);
+			this->Controls->Add(this->btnZaloguj);
 			this->Name = L"Logowanie";
 			this->Text = L"Logowanie";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void btnAnuluj_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->Close();
+	}
+};
 }
