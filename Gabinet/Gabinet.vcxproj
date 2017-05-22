@@ -136,16 +136,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logowanie.cpp" />
+    <ClCompile Include="Program.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logowanie.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Program.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Logowanie.resx">
       <DependentUpon>Logowanie.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Program.resx">
+      <DependentUpon>Program.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

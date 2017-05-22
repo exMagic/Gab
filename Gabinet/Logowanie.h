@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Program.h"
 
 namespace Gabinet {
 
@@ -74,6 +75,7 @@ namespace Gabinet {
 			this->btnZaloguj->TabIndex = 0;
 			this->btnZaloguj->Text = L"Zaloguj";
 			this->btnZaloguj->UseVisualStyleBackColor = true;
+			this->btnZaloguj->Click += gcnew System::EventHandler(this, &Logowanie::btnZaloguj_Click);
 			// 
 			// btnAnuluj
 			// 
@@ -139,5 +141,12 @@ namespace Gabinet {
 	private: System::Void btnAnuluj_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();
 	}
+private: System::Void btnZaloguj_Click(System::Object^  sender, System::EventArgs^  e) {
+	this->Hide();
+	Program^ program = gcnew Program();
+	program->ShowDialog();
+	this->Close();
+}
+
 };
 }
