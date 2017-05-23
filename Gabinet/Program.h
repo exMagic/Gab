@@ -15,9 +15,10 @@ namespace Gabinet {
 	public ref class Program : public System::Windows::Forms::Form
 	{
 	public:
-		Program(void)
+		Program(int uzytkownik)
 		{
 			InitializeComponent();
+			int id_uzytkownika = uzytkownik;
 			//
 			//TODO: Add the constructor code here
 			//

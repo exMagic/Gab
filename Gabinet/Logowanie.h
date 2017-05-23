@@ -145,15 +145,16 @@ namespace Gabinet {
 private: System::Void btnZaloguj_Click(System::Object^  sender, System::EventArgs^  e) {
 	String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
 	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-	MySqlCommand^ zapytanie = gcnew MySqlCommand("select uzytkownik_id from uzytkownik where uzytkownik_nazwa='Admin' and haslo= password('123')", laczBaze);
+	MySqlCommand^ zapytanie = gcnew MySqlCommand("select uzytkownik_id from uzytkownik where uzytkownik_nazwa='" + txtUzytkownik->Text + "' and haslo= PASSWORD('" + txtHaslo->Text + "');", laczBaze);
 
 	MySqlDataReader^ odczytanie;
 	try {
 		laczBaze->Open();
 		odczytanie = zapytanie->ExecuteReader();
 		if (odczytanie->Read()) {
+			int id_uzytkownik = odczytanie->GetInt32(0);
 			this->Hide();
-			Program^ program = gcnew Program();
+			Program^ program = gcnew Program(id_uzytkownik);
 			program->ShowDialog();
 			this->Close();
 		}
