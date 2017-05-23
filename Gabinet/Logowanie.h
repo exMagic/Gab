@@ -160,7 +160,7 @@ private: System::Void btnZaloguj_Click(System::Object^  sender, System::EventArg
 		}
 		else
 		{
-			MessageBox::Show("error uzytkowniaka albo haslo");
+			MessageBox::Show("Błędna nazwa użytkownika lub niepoprawne hasło");
 		}
 	}
 	catch (Exception^ ex){
