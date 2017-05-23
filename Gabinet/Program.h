@@ -8,6 +8,7 @@ namespace Gabinet {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Summary for Program
@@ -15,6 +16,10 @@ namespace Gabinet {
 	public ref class Program : public System::Windows::Forms::Form
 	{
 	public:
+		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
+
+	public:
+		int id_uzytkownika;
 		Program(int uzytkownik)
 		{
 			InitializeComponent();
@@ -68,14 +73,14 @@ namespace Gabinet {
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->txtHStare = (gcnew System::Windows::Forms::TextBox());
-			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
-			this->txtHNowe2 = (gcnew System::Windows::Forms::TextBox());
-			this->btnHZmien = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtHStare = (gcnew System::Windows::Forms::TextBox());
+			this->btnHZmien = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->txtHNowe2 = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -113,63 +118,6 @@ namespace Gabinet {
 			this->tabPage2->Text = L"Zmiana hasła";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(84, 68);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(65, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Stare hasło:";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(81, 97);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(68, 13);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Nowe hasło:";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(71, 126);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(78, 13);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"Powtórz hasło:";
-			// 
-			// txtHStare
-			// 
-			this->txtHStare->Location = System::Drawing::Point(155, 65);
-			this->txtHStare->Name = L"txtHStare";
-			this->txtHStare->Size = System::Drawing::Size(100, 20);
-			this->txtHStare->TabIndex = 3;
-			// 
-			// txtHNowe1
-			// 
-			this->txtHNowe1->Location = System::Drawing::Point(155, 94);
-			this->txtHNowe1->Name = L"txtHNowe1";
-			this->txtHNowe1->Size = System::Drawing::Size(100, 20);
-			this->txtHNowe1->TabIndex = 4;
-			// 
-			// txtHNowe2
-			// 
-			this->txtHNowe2->Location = System::Drawing::Point(155, 123);
-			this->txtHNowe2->Name = L"txtHNowe2";
-			this->txtHNowe2->Size = System::Drawing::Size(100, 20);
-			this->txtHNowe2->TabIndex = 5;
-			// 
-			// btnHZmien
-			// 
-			this->btnHZmien->Location = System::Drawing::Point(104, 182);
-			this->btnHZmien->Name = L"btnHZmien";
-			this->btnHZmien->Size = System::Drawing::Size(120, 23);
-			this->btnHZmien->TabIndex = 6;
-			this->btnHZmien->Text = L"Zmień";
-			this->btnHZmien->UseVisualStyleBackColor = true;
-			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->txtHStare);
@@ -185,6 +133,68 @@ namespace Gabinet {
 			this->groupBox1->TabIndex = 7;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Zmiana hasła";
+			// 
+			// txtHStare
+			// 
+			this->txtHStare->Location = System::Drawing::Point(155, 65);
+			this->txtHStare->Name = L"txtHStare";
+			this->txtHStare->Size = System::Drawing::Size(100, 20);
+			this->txtHStare->TabIndex = 3;
+			this->txtHStare->TextChanged += gcnew System::EventHandler(this, &Program::txtHStare_TextChanged);
+			// 
+			// btnHZmien
+			// 
+			this->btnHZmien->Enabled = false;
+			this->btnHZmien->Location = System::Drawing::Point(104, 182);
+			this->btnHZmien->Name = L"btnHZmien";
+			this->btnHZmien->Size = System::Drawing::Size(120, 23);
+			this->btnHZmien->TabIndex = 6;
+			this->btnHZmien->Text = L"Zmień";
+			this->btnHZmien->UseVisualStyleBackColor = true;
+			this->btnHZmien->Click += gcnew System::EventHandler(this, &Program::btnHZmien_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(84, 68);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(65, 13);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Stare hasło:";
+			// 
+			// txtHNowe2
+			// 
+			this->txtHNowe2->Location = System::Drawing::Point(155, 123);
+			this->txtHNowe2->Name = L"txtHNowe2";
+			this->txtHNowe2->Size = System::Drawing::Size(100, 20);
+			this->txtHNowe2->TabIndex = 5;
+			this->txtHNowe2->TextChanged += gcnew System::EventHandler(this, &Program::txtHNowe2_TextChanged);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(81, 97);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(68, 13);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Nowe hasło:";
+			// 
+			// txtHNowe1
+			// 
+			this->txtHNowe1->Location = System::Drawing::Point(155, 94);
+			this->txtHNowe1->Name = L"txtHNowe1";
+			this->txtHNowe1->Size = System::Drawing::Size(100, 20);
+			this->txtHNowe1->TabIndex = 4;
+			this->txtHNowe1->TextChanged += gcnew System::EventHandler(this, &Program::txtHNowe1_TextChanged);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(71, 126);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(78, 13);
+			this->label3->TabIndex = 2;
+			this->label3->Text = L"Powtórz hasło:";
 			// 
 			// Program
 			// 
@@ -202,5 +212,42 @@ namespace Gabinet {
 
 		}
 #pragma endregion
-	};
+		private: Void btnHZmien_pokaz() {
+			if (txtHStare->Text != "" && txtHNowe1->Text != "" && txtHNowe2->Text == txtHNowe1->Text) {
+				btnHZmien->Enabled = true;
+			}
+			else
+			{
+				btnHZmien->Enabled = false;
+			}
+		}
+	private: System::Void txtHStare_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		btnHZmien_pokaz();
+	}
+	private: System::Void txtHNowe1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		btnHZmien_pokaz();
+	}
+	private: System::Void txtHNowe2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		btnHZmien_pokaz();
+	}
+	private: System::Void btnHZmien_Click(System::Object^  sender, System::EventArgs^  e) {
+		// Zmiana hasła
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("update uzytkownik set haslo = password('" + txtHNowe1->Text + "') where haslo = password('" +txtHStare->Text+ "') and uzytkownik_id = "+id_uzytkownika+"", laczBaze);
+		try {
+			laczBaze->Open();
+			if (zapytanie->ExecuteNonQuery())
+			{
+				MessageBox::Show("Hasło zostało zmienione");
+			}
+			else {
+				MessageBox::Show("Podane hasło jest niepoprawne");
+			}
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+		}
+	}
+
+};
 }
