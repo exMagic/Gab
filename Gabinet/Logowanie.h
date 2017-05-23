@@ -112,6 +112,7 @@ namespace Gabinet {
 			this->txtUzytkownik->Name = L"txtUzytkownik";
 			this->txtUzytkownik->Size = System::Drawing::Size(140, 20);
 			this->txtUzytkownik->TabIndex = 4;
+			this->txtUzytkownik->Text = L"admin";
 			// 
 			// txtHaslo
 			// 
@@ -120,6 +121,7 @@ namespace Gabinet {
 			this->txtHaslo->PasswordChar = '*';
 			this->txtHaslo->Size = System::Drawing::Size(140, 20);
 			this->txtHaslo->TabIndex = 5;
+			this->txtHaslo->Text = L"123";
 			// 
 			// Logowanie
 			// 
