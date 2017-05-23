@@ -9,6 +9,7 @@ namespace Gabinet {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Summary for Logowanie
@@ -142,10 +143,30 @@ namespace Gabinet {
 		this->Close();
 	}
 private: System::Void btnZaloguj_Click(System::Object^  sender, System::EventArgs^  e) {
-	this->Hide();
-	Program^ program = gcnew Program();
-	program->ShowDialog();
-	this->Close();
+	String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
+	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+	MySqlCommand^ zapytanie = gcnew MySqlCommand("select uzytkownik_id from uzytkownik where uzytkownik_nazwa='Admin' and haslo= password('123')", laczBaze);
+
+	MySqlDataReader^ odczytanie;
+	try {
+		laczBaze->Open();
+		odczytanie = zapytanie->ExecuteReader();
+		if (odczytanie->Read()) {
+			this->Hide();
+			Program^ program = gcnew Program();
+			program->ShowDialog();
+			this->Close();
+		}
+		else
+		{
+			MessageBox::Show("error uzytkowniaka albo haslo");
+		}
+	}
+	catch (Exception^ ex){
+		MessageBox::Show(ex->Message);
+	}
+	laczBaze->Close();
+
 }
 
 };
