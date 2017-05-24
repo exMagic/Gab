@@ -17,15 +17,14 @@ namespace Gabinet {
 	{
 	public:
 		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
-
-	public:
 		int id_uzytkownika;
+
 		Program(int uzytkownik)
 		{
 			InitializeComponent();
-			int id_uzytkownika = uzytkownik;
+			id_uzytkownika = uzytkownik;
 			//
-			//TODO: Add the constructor code here
+			//TODO: W tym miejscu dodaj kod konstruktora
 			//
 		}
 
@@ -233,6 +232,7 @@ namespace Gabinet {
 	private: System::Void btnHZmien_Click(System::Object^  sender, System::EventArgs^  e) {
 		// Zmiana hasła
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("update uzytkownik set haslo = password('" + txtHNowe1->Text + "') where haslo = password('" +txtHStare->Text+ "') and uzytkownik_id = "+id_uzytkownika+"", laczBaze);
 		try {
 			laczBaze->Open();
