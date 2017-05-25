@@ -91,6 +91,9 @@ namespace Gabinet {
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->s = (gcnew System::Windows::Forms::TabPage());
+			this->btnPDodaj = (gcnew System::Windows::Forms::Button());
+			this->btnPModyfikuj = (gcnew System::Windows::Forms::Button());
+			this->btnPUsun = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtPLogin = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
@@ -112,9 +115,6 @@ namespace Gabinet {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->btnPUsun = (gcnew System::Windows::Forms::Button());
-			this->btnPModyfikuj = (gcnew System::Windows::Forms::Button());
-			this->btnPDodaj = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->s->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -151,6 +151,35 @@ namespace Gabinet {
 			this->s->TabIndex = 0;
 			this->s->Text = L"Pracownicy";
 			this->s->UseVisualStyleBackColor = true;
+			// 
+			// btnPDodaj
+			// 
+			this->btnPDodaj->Location = System::Drawing::Point(265, 332);
+			this->btnPDodaj->Name = L"btnPDodaj";
+			this->btnPDodaj->Size = System::Drawing::Size(75, 23);
+			this->btnPDodaj->TabIndex = 7;
+			this->btnPDodaj->Text = L"Dodaj";
+			this->btnPDodaj->UseVisualStyleBackColor = true;
+			this->btnPDodaj->Click += gcnew System::EventHandler(this, &Program::btnPDodaj_Click);
+			// 
+			// btnPModyfikuj
+			// 
+			this->btnPModyfikuj->Location = System::Drawing::Point(151, 332);
+			this->btnPModyfikuj->Name = L"btnPModyfikuj";
+			this->btnPModyfikuj->Size = System::Drawing::Size(75, 23);
+			this->btnPModyfikuj->TabIndex = 6;
+			this->btnPModyfikuj->Text = L"Modyfikuj";
+			this->btnPModyfikuj->UseVisualStyleBackColor = true;
+			this->btnPModyfikuj->Click += gcnew System::EventHandler(this, &Program::btnPModyfikuj_Click);
+			// 
+			// btnPUsun
+			// 
+			this->btnPUsun->Location = System::Drawing::Point(37, 332);
+			this->btnPUsun->Name = L"btnPUsun";
+			this->btnPUsun->Size = System::Drawing::Size(75, 23);
+			this->btnPUsun->TabIndex = 5;
+			this->btnPUsun->Text = L"Usuń";
+			this->btnPUsun->UseVisualStyleBackColor = true;
 			// 
 			// groupBox2
 			// 
@@ -351,34 +380,6 @@ namespace Gabinet {
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Powtórz hasło:";
 			// 
-			// btnPUsun
-			// 
-			this->btnPUsun->Location = System::Drawing::Point(37, 332);
-			this->btnPUsun->Name = L"btnPUsun";
-			this->btnPUsun->Size = System::Drawing::Size(75, 23);
-			this->btnPUsun->TabIndex = 5;
-			this->btnPUsun->Text = L"Usuń";
-			this->btnPUsun->UseVisualStyleBackColor = true;
-			// 
-			// btnPModyfikuj
-			// 
-			this->btnPModyfikuj->Location = System::Drawing::Point(151, 332);
-			this->btnPModyfikuj->Name = L"btnPModyfikuj";
-			this->btnPModyfikuj->Size = System::Drawing::Size(75, 23);
-			this->btnPModyfikuj->TabIndex = 6;
-			this->btnPModyfikuj->Text = L"Edytuj";
-			this->btnPModyfikuj->UseVisualStyleBackColor = true;
-			// 
-			// btnPDodaj
-			// 
-			this->btnPDodaj->Location = System::Drawing::Point(265, 332);
-			this->btnPDodaj->Name = L"btnPDodaj";
-			this->btnPDodaj->Size = System::Drawing::Size(75, 23);
-			this->btnPDodaj->TabIndex = 7;
-			this->btnPDodaj->Text = L"Dodaj";
-			this->btnPDodaj->UseVisualStyleBackColor = true;
-			this->btnPDodaj->Click += gcnew System::EventHandler(this, &Program::btnPDodaj_Click);
-			// 
 			// Program
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -441,7 +442,25 @@ namespace Gabinet {
 			MessageBox::Show(komunikat->Message);
 		}
 	}
+private: Void pokaz_siatke() {
+	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik order by nazwisko", laczBaze);
+	try
+	{
+		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+		moja->SelectCommand = zapytanie;
+		DataTable^ tabela = gcnew DataTable();
+		moja->Fill(tabela);
 
+		BindingSource^ zrodlo = gcnew BindingSource();
+		zrodlo->DataSource = tabela;
+		dgUzytkownicy->DataSource = zrodlo;
+		laczBaze->Close();
+	}
+	catch (Exception^ komunikat) {
+		MessageBox::Show(komunikat->Message);
+	}
+}
 	private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%" + txtPSzukaj->Text + "%' order by nazwisko", laczBaze);
@@ -478,14 +497,7 @@ namespace Gabinet {
 			MessageBox::Show("uzupełnij dane!");
 		}
 		else {
-			MessageBox::Show("dane OK");
-			if (chbPPracownik->Checked) {
-				pracownik_typ = 1;
-			}
-			else {
-				pracownik_typ = 0;
-			}
-
+			uzytkownik_typ();
 			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 			MySqlCommand^ polecenie = laczBaze->CreateCommand();
 			MySqlTransaction^ transakcja;
@@ -506,7 +518,48 @@ namespace Gabinet {
 				
 			}
 			laczBaze->Close();
+
+		}
+		pokaz_siatke();
+	}
+	private: Void uzytkownik_typ() {
+		if (chbPPracownik->Checked) {
+			pracownik_typ = 1;
+		}
+		else {
+			pracownik_typ = 0;
 		}
 	}
-	};
+	private: System::Void btnPModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
+		//modyfikacja danych użytkownika
+		if (txtPImie->Text->Length < 2 || txtPNazwisko->Text->Length < 2 || txtPLogin->Text->Length < 2) {
+			MessageBox::Show("uzupełnij dane!");
+		}
+		else {
+			uzytkownik_typ();
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczBaze;
+
+			polecenie->Transaction = transakcja;
+			try {
+				polecenie->CommandText = "update uzytkownik set imie='" + txtPImie->Text + "', nazwisko='" + txtPNazwisko->Text + "', uzytkownik_nazwa = '" + txtPLogin->Text + "', pracownik = " + pracownik_typ + " where uzytkownik_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+
+			}
+			laczBaze->Close();
+
+		}
+		pokaz_siatke();
+	}
+};
 }
