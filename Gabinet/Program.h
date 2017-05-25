@@ -15,16 +15,23 @@ namespace Gabinet {
 	/// </summary>
 	public ref class Program : public System::Windows::Forms::Form
 	{
+	private: System::Windows::Forms::Button^  btnPSzukaj;
+	public:
+	private: System::Windows::Forms::TextBox^  txtPSzukaj;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::DataGridView^  dgUzytkownicy;
 	public:
 		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
 		int id_uzytkownika;
+	
+			 
 
 		Program(int uzytkownik)
 		{
 			InitializeComponent();
-			id_uzytkownika = uzytkownik;
+			int id_uzytkownika = uzytkownik;
 			//
-			//TODO: W tym miejscu dodaj kod konstruktora
+			//TODO: Add the constructor code here
 			//
 		}
 
@@ -71,6 +78,10 @@ namespace Gabinet {
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->btnPSzukaj = (gcnew System::Windows::Forms::Button());
+			this->txtPSzukaj = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->dgUzytkownicy = (gcnew System::Windows::Forms::DataGridView());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtHStare = (gcnew System::Windows::Forms::TextBox());
@@ -81,6 +92,8 @@ namespace Gabinet {
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
+			this->tabPage1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUzytkownicy))->BeginInit();
 			this->tabPage2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -98,13 +111,51 @@ namespace Gabinet {
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->btnPSzukaj);
+			this->tabPage1->Controls->Add(this->txtPSzukaj);
+			this->tabPage1->Controls->Add(this->label4);
+			this->tabPage1->Controls->Add(this->dgUzytkownicy);
 			this->tabPage1->Location = System::Drawing::Point(4, 4);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 			this->tabPage1->Size = System::Drawing::Size(795, 419);
 			this->tabPage1->TabIndex = 0;
-			this->tabPage1->Text = L"tabPage1";
+			this->tabPage1->Text = L"Pracownicy";
 			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// btnPSzukaj
+			// 
+			this->btnPSzukaj->Location = System::Drawing::Point(275, 19);
+			this->btnPSzukaj->Name = L"btnPSzukaj";
+			this->btnPSzukaj->Size = System::Drawing::Size(75, 23);
+			this->btnPSzukaj->TabIndex = 3;
+			this->btnPSzukaj->Text = L"Szukaj";
+			this->btnPSzukaj->UseVisualStyleBackColor = true;
+			this->btnPSzukaj->Click += gcnew System::EventHandler(this, &Program::btnPSzukaj_Click);
+			// 
+			// txtPSzukaj
+			// 
+			this->txtPSzukaj->Location = System::Drawing::Point(109, 21);
+			this->txtPSzukaj->Name = L"txtPSzukaj";
+			this->txtPSzukaj->Size = System::Drawing::Size(160, 20);
+			this->txtPSzukaj->TabIndex = 2;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(43, 24);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(60, 13);
+			this->label4->TabIndex = 1;
+			this->label4->Text = L"Pracownik:";
+			// 
+			// dgUzytkownicy
+			// 
+			this->dgUzytkownicy->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgUzytkownicy->Location = System::Drawing::Point(480, 19);
+			this->dgUzytkownicy->Name = L"dgUzytkownicy";
+			this->dgUzytkownicy->Size = System::Drawing::Size(297, 383);
+			this->dgUzytkownicy->TabIndex = 0;
 			// 
 			// tabPage2
 			// 
@@ -204,6 +255,9 @@ namespace Gabinet {
 			this->Name = L"Program";
 			this->Text = L"Program";
 			this->tabControl1->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
+			this->tabPage1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUzytkownicy))->EndInit();
 			this->tabPage2->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -231,8 +285,7 @@ namespace Gabinet {
 	}
 	private: System::Void btnHZmien_Click(System::Object^  sender, System::EventArgs^  e) {
 		// Zmiana hasła
-		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-		
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);		
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("update uzytkownik set haslo = password('" + txtHNowe1->Text + "') where haslo = password('" +txtHStare->Text+ "') and uzytkownik_id = "+id_uzytkownika+"", laczBaze);
 		try {
 			laczBaze->Open();
@@ -249,5 +302,23 @@ namespace Gabinet {
 		}
 	}
 
+private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM uzytkownik where concat(uzytkownik_nazwa, imie, nazwisko) like '%"+txtPSzukaj->Text+"%'", laczBaze);
+	try
+	{
+		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+		moja->SelectCommand = zapytanie;
+		DataTable^ tabela = gcnew DataTable();
+		moja->Fill(tabela);
+
+		BindingSource^ zrodlo = gcnew BindingSource();
+		zrodlo->DataSource = tabela;
+		dgUzytkownicy->DataSource = zrodlo;
+	}
+	catch (Exception^ komunikat) {
+		MessageBox::Show(komunikat->Message);
+	}
+}
 };
 }
