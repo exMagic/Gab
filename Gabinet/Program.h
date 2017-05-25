@@ -180,6 +180,7 @@ namespace Gabinet {
 			this->btnPUsun->TabIndex = 5;
 			this->btnPUsun->Text = L"Usuń";
 			this->btnPUsun->UseVisualStyleBackColor = true;
+			this->btnPUsun->Click += gcnew System::EventHandler(this, &Program::btnPUsun_Click);
 			// 
 			// groupBox2
 			// 
@@ -561,5 +562,41 @@ private: Void pokaz_siatke() {
 		}
 		pokaz_siatke();
 	}
+private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^  e) {
+	//usuniecie uzytkownika
+	if (id_rekordu==1) {
+		MessageBox::Show("nie można usunąć administratora!");
+	}
+	else {
+		uzytkownik_typ();
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ polecenie = laczBaze->CreateCommand();
+		MySqlTransaction^ transakcja;
+		laczBaze->Open();
+		transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+		polecenie->Connection = laczBaze;
+		polecenie->Transaction = transakcja;
+		try {
+			if (MessageBox::Show("Czy usunąć użytkownika?", "UWAGA!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
+				polecenie->CommandText = "delete from uzytkownik where uzytkownik_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+				MessageBox::Show("Użytkownik został usunięty");
+			}
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+			transakcja->Rollback();
+		}
+		laczBaze->Close();
+
+	}
+	txtPImie->Text = "";
+	txtPNazwisko->Text = "";
+	txtPLogin->Text = "";
+	chbPPracownik->Checked = false;
+
+	pokaz_siatke();
+}
 };
 }
