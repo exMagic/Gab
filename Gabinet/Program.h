@@ -164,6 +164,7 @@ namespace Gabinet {
 			// 
 			// btnPModyfikuj
 			// 
+			this->btnPModyfikuj->Enabled = false;
 			this->btnPModyfikuj->Location = System::Drawing::Point(151, 332);
 			this->btnPModyfikuj->Name = L"btnPModyfikuj";
 			this->btnPModyfikuj->Size = System::Drawing::Size(75, 23);
@@ -174,6 +175,7 @@ namespace Gabinet {
 			// 
 			// btnPUsun
 			// 
+			this->btnPUsun->Enabled = false;
 			this->btnPUsun->Location = System::Drawing::Point(37, 332);
 			this->btnPUsun->Name = L"btnPUsun";
 			this->btnPUsun->Size = System::Drawing::Size(75, 23);
@@ -490,6 +492,9 @@ private: Void pokaz_siatke() {
 			txtPNazwisko->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
 			txtPLogin->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["login"]->Value->ToString();
 			chbPPracownik->Checked = Convert::ToBoolean(dgUzytkownicy->Rows[e->RowIndex]->Cells["pracownik"]->Value);
+			btnPModyfikuj->Enabled = true;
+			btnPUsun->Enabled = true;
+
 		}
 	}
 	private: System::Void btnPDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -562,6 +567,14 @@ private: Void pokaz_siatke() {
 		}
 		pokaz_siatke();
 	}
+private: Void wyczysc(Control^ zbior) {
+	for each(Control^ element in zbior->Controls) {
+		if (element->GetType() == TextBox::typeid){
+			element->Text = "";
+		}
+	}
+}
+
 private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^  e) {
 	//usuniecie uzytkownika
 	if (id_rekordu==1) {
@@ -591,9 +604,7 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 		laczBaze->Close();
 
 	}
-	txtPImie->Text = "";
-	txtPNazwisko->Text = "";
-	txtPLogin->Text = "";
+	wyczysc(groupBox2);
 	chbPPracownik->Checked = false;
 
 	pokaz_siatke();
