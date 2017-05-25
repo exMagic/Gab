@@ -17,26 +17,7 @@ namespace Gabinet {
 	{
 	public:
 		int id_uzytkownika;
-		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
-		Program(int uzytkownik)
-		{
-			InitializeComponent();
-			int id_uzytkownika = uzytkownik;
-			//
-			//TODO: Add the constructor code here
-			//
-		}
-	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~Program()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
+
 	private: System::Windows::Forms::Button^  btnPSzukaj;
 	private: System::Windows::Forms::TextBox^  txtPSzukaj;
 	private: System::Windows::Forms::Label^  label4;
@@ -71,7 +52,30 @@ namespace Gabinet {
 	private: System::Windows::Forms::TextBox^  txtHNowe1;
 
 	private: System::Windows::Forms::Label^  label3;
-
+	private: System::Windows::Forms::Button^  btnPDodaj;
+	private: System::Windows::Forms::Button^  btnPModyfikuj;
+	private: System::Windows::Forms::Button^  btnPUsun;
+	public:
+		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
+		Program(int uzytkownik)
+		{
+			InitializeComponent();
+			id_uzytkownika = uzytkownik;
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+	protected:
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		~Program()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -108,6 +112,9 @@ namespace Gabinet {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->btnPUsun = (gcnew System::Windows::Forms::Button());
+			this->btnPModyfikuj = (gcnew System::Windows::Forms::Button());
+			this->btnPDodaj = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->s->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -129,6 +136,9 @@ namespace Gabinet {
 			// 
 			// s
 			// 
+			this->s->Controls->Add(this->btnPDodaj);
+			this->s->Controls->Add(this->btnPModyfikuj);
+			this->s->Controls->Add(this->btnPUsun);
 			this->s->Controls->Add(this->groupBox2);
 			this->s->Controls->Add(this->btnPSzukaj);
 			this->s->Controls->Add(this->txtPSzukaj);
@@ -341,6 +351,34 @@ namespace Gabinet {
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Powtórz hasło:";
 			// 
+			// btnPUsun
+			// 
+			this->btnPUsun->Location = System::Drawing::Point(37, 332);
+			this->btnPUsun->Name = L"btnPUsun";
+			this->btnPUsun->Size = System::Drawing::Size(75, 23);
+			this->btnPUsun->TabIndex = 5;
+			this->btnPUsun->Text = L"Usuń";
+			this->btnPUsun->UseVisualStyleBackColor = true;
+			// 
+			// btnPModyfikuj
+			// 
+			this->btnPModyfikuj->Location = System::Drawing::Point(151, 332);
+			this->btnPModyfikuj->Name = L"btnPModyfikuj";
+			this->btnPModyfikuj->Size = System::Drawing::Size(75, 23);
+			this->btnPModyfikuj->TabIndex = 6;
+			this->btnPModyfikuj->Text = L"Edytuj";
+			this->btnPModyfikuj->UseVisualStyleBackColor = true;
+			// 
+			// btnPDodaj
+			// 
+			this->btnPDodaj->Location = System::Drawing::Point(265, 332);
+			this->btnPDodaj->Name = L"btnPDodaj";
+			this->btnPDodaj->Size = System::Drawing::Size(75, 23);
+			this->btnPDodaj->TabIndex = 7;
+			this->btnPDodaj->Text = L"Dodaj";
+			this->btnPDodaj->UseVisualStyleBackColor = true;
+			this->btnPDodaj->Click += gcnew System::EventHandler(this, &Program::btnPDodaj_Click);
+			// 
 			// Program
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -364,16 +402,17 @@ namespace Gabinet {
 #pragma endregion
 		//edklaracja zmiennych
 		int id_rekordu; //wybranie rekordu na którym pracuję - zmienna dla wszystkich siatek
+		int pracownik_typ;
 
-		private: Void btnHZmien_pokaz() {
-			if (txtHStare->Text != "" && txtHNowe1->Text != "" && txtHNowe2->Text == txtHNowe1->Text) {
-				btnHZmien->Enabled = true;
-			}
-			else
-			{
-				btnHZmien->Enabled = false;
-			}
+	private: Void btnHZmien_pokaz() {
+		if (txtHStare->Text != "" && txtHNowe1->Text != "" && txtHNowe2->Text == txtHNowe1->Text) {
+			btnHZmien->Enabled = true;
 		}
+		else
+		{
+			btnHZmien->Enabled = false;
+		}
+	}
 	private: System::Void txtHStare_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		btnHZmien_pokaz();
 	}
@@ -385,8 +424,8 @@ namespace Gabinet {
 	}
 	private: System::Void btnHZmien_Click(System::Object^  sender, System::EventArgs^  e) {
 		// Zmiana hasła
-		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);		
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("update uzytkownik set haslo = password('" + txtHNowe1->Text + "') where haslo = password('" +txtHStare->Text+ "') and uzytkownik_id = "+id_uzytkownika+"", laczBaze);
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("update uzytkownik set haslo = password('" + txtHNowe1->Text + "') where haslo = password('" + txtHStare->Text + "') and uzytkownik_id = " + id_uzytkownika + "", laczBaze);
 		try {
 			laczBaze->Open();
 			if (zapytanie->ExecuteNonQuery())
@@ -403,35 +442,71 @@ namespace Gabinet {
 		}
 	}
 
-private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
-	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%"+txtPSzukaj->Text+"%' order by nazwisko", laczBaze);
-	try
-	{
-		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
-		moja->SelectCommand = zapytanie;
-		DataTable^ tabela = gcnew DataTable();
-		moja->Fill(tabela);
+	private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%" + txtPSzukaj->Text + "%' order by nazwisko", laczBaze);
+		try
+		{
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
 
-		BindingSource^ zrodlo = gcnew BindingSource();
-		zrodlo->DataSource = tabela;
-		dgUzytkownicy->DataSource = zrodlo;
-		laczBaze->Close();
-	}
-	catch (Exception^ komunikat) {
-		MessageBox::Show(komunikat->Message);
-	}
+			BindingSource^ zrodlo = gcnew BindingSource();
+			zrodlo->DataSource = tabela;
+			dgUzytkownicy->DataSource = zrodlo;
+			laczBaze->Close();
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+		}
 
-	dgUzytkownicy->Columns[0]->Visible = false;
-}
-private: System::Void dgUzytkownicy_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-	if (e->RowIndex >= 0) {
-		id_rekordu = Convert::ToInt32(dgUzytkownicy->Rows[e->RowIndex]->Cells[0]->Value);
-		txtPImie->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
-		txtPNazwisko->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
-		txtPLogin->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["login"]->Value->ToString();
-		chbPPracownik->Checked = Convert::ToBoolean(dgUzytkownicy->Rows[e->RowIndex]->Cells["pracownik"]->Value);
+		dgUzytkownicy->Columns[0]->Visible = false;
 	}
-}
-};
+	private: System::Void dgUzytkownicy_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		if (e->RowIndex >= 0) {
+			id_rekordu = Convert::ToInt32(dgUzytkownicy->Rows[e->RowIndex]->Cells[0]->Value);
+			txtPImie->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
+			txtPNazwisko->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
+			txtPLogin->Text = dgUzytkownicy->Rows[e->RowIndex]->Cells["login"]->Value->ToString();
+			chbPPracownik->Checked = Convert::ToBoolean(dgUzytkownicy->Rows[e->RowIndex]->Cells["pracownik"]->Value);
+		}
+	}
+	private: System::Void btnPDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
+		//dodawanie uzytkownikow do bazy
+		if (txtPImie->Text->Length < 2 || txtPNazwisko->Text->Length < 2 || txtPLogin->Text->Length < 2) {
+			MessageBox::Show("uzupełnij dane!");
+		}
+		else {
+			MessageBox::Show("dane OK");
+			if (chbPPracownik->Checked) {
+				pracownik_typ = 1;
+			}
+			else {
+				pracownik_typ = 0;
+			}
+
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczBaze;
+
+			polecenie->Transaction = transakcja;
+			try{
+				polecenie->CommandText = "insert into uzytkownik set imie='"+txtPImie->Text+"', nazwisko='"+txtPNazwisko->Text+"', uzytkownik_nazwa = '"+txtPLogin->Text+"', haslo = password('"+txtPLogin->Text+"'), pracownik = "+pracownik_typ+"";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+				
+			}
+			laczBaze->Close();
+		}
+	}
+	};
 }
