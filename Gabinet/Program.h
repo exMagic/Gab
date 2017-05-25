@@ -296,6 +296,7 @@ namespace Gabinet {
 			else {
 				MessageBox::Show("Podane hasło jest niepoprawne");
 			}
+			laczBaze->Close();
 		}
 		catch (Exception^ komunikat) {
 			MessageBox::Show(komunikat->Message);
@@ -304,7 +305,7 @@ namespace Gabinet {
 
 private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM uzytkownik where concat(uzytkownik_nazwa, imie, nazwisko) like '%"+txtPSzukaj->Text+"%'", laczBaze);
+	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%"+txtPSzukaj->Text+"%' order by nazwisko", laczBaze);
 	try
 	{
 		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
@@ -315,10 +316,13 @@ private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArg
 		BindingSource^ zrodlo = gcnew BindingSource();
 		zrodlo->DataSource = tabela;
 		dgUzytkownicy->DataSource = zrodlo;
+		laczBaze->Close();
 	}
 	catch (Exception^ komunikat) {
 		MessageBox::Show(komunikat->Message);
 	}
+
+	dgUzytkownicy->Columns[0]->Visible = false;
 }
 };
 }
