@@ -145,7 +145,7 @@ namespace Gabinet {
 		this->Close();
 	}
 private: System::Void btnZaloguj_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
+	String^ konfiguracja = L"datasource=10.0.0.112;port=3306;username=toor;password=kolankokolanko7;database=gabinet";
 	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 	MySqlCommand^ zapytanie = gcnew MySqlCommand("select uzytkownik_id from uzytkownik where uzytkownik_nazwa='" + txtUzytkownik->Text + "' and haslo= PASSWORD('" + txtHaslo->Text + "');", laczBaze);
 
