@@ -251,18 +251,18 @@ namespace Gabinet {
 			this->groupBox4->Controls->Add(this->button3);
 			this->groupBox4->Controls->Add(this->button2);
 			this->groupBox4->Controls->Add(this->button1);
-			this->groupBox4->Location = System::Drawing::Point(193, 19);
+			this->groupBox4->Location = System::Drawing::Point(211, 19);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(94, 154);
+			this->groupBox4->Size = System::Drawing::Size(76, 154);
 			this->groupBox4->TabIndex = 18;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Szablony";
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(6, 113);
+			this->button4->Location = System::Drawing::Point(17, 111);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(46, 23);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"10-18";
 			this->button4->UseVisualStyleBackColor = true;
@@ -270,9 +270,9 @@ namespace Gabinet {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(6, 83);
+			this->button3->Location = System::Drawing::Point(17, 81);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(46, 23);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"9-17";
 			this->button3->UseVisualStyleBackColor = true;
@@ -280,9 +280,9 @@ namespace Gabinet {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(6, 53);
+			this->button2->Location = System::Drawing::Point(17, 51);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(46, 23);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"8-16";
 			this->button2->UseVisualStyleBackColor = true;
@@ -290,9 +290,9 @@ namespace Gabinet {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(6, 23);
+			this->button1->Location = System::Drawing::Point(17, 21);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(46, 23);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"7-15";
 			this->button1->UseVisualStyleBackColor = true;
@@ -300,16 +300,16 @@ namespace Gabinet {
 			// 
 			// txtP6k
 			// 
-			this->txtP6k->Location = System::Drawing::Point(131, 153);
+			this->txtP6k->Location = System::Drawing::Point(149, 153);
 			this->txtP6k->Name = L"txtP6k";
-			this->txtP6k->Size = System::Drawing::Size(45, 20);
+			this->txtP6k->Size = System::Drawing::Size(56, 20);
 			this->txtP6k->TabIndex = 17;
 			// 
 			// txtP6p
 			// 
 			this->txtP6p->Location = System::Drawing::Point(80, 153);
 			this->txtP6p->Name = L"txtP6p";
-			this->txtP6p->Size = System::Drawing::Size(45, 20);
+			this->txtP6p->Size = System::Drawing::Size(54, 20);
 			this->txtP6p->TabIndex = 16;
 			// 
 			// label13
@@ -323,16 +323,16 @@ namespace Gabinet {
 			// 
 			// txtP5k
 			// 
-			this->txtP5k->Location = System::Drawing::Point(131, 127);
+			this->txtP5k->Location = System::Drawing::Point(149, 127);
 			this->txtP5k->Name = L"txtP5k";
-			this->txtP5k->Size = System::Drawing::Size(45, 20);
+			this->txtP5k->Size = System::Drawing::Size(56, 20);
 			this->txtP5k->TabIndex = 14;
 			// 
 			// txtP5p
 			// 
 			this->txtP5p->Location = System::Drawing::Point(80, 127);
 			this->txtP5p->Name = L"txtP5p";
-			this->txtP5p->Size = System::Drawing::Size(45, 20);
+			this->txtP5p->Size = System::Drawing::Size(54, 20);
 			this->txtP5p->TabIndex = 13;
 			// 
 			// label12
@@ -346,16 +346,16 @@ namespace Gabinet {
 			// 
 			// txtP4k
 			// 
-			this->txtP4k->Location = System::Drawing::Point(131, 101);
+			this->txtP4k->Location = System::Drawing::Point(149, 101);
 			this->txtP4k->Name = L"txtP4k";
-			this->txtP4k->Size = System::Drawing::Size(45, 20);
+			this->txtP4k->Size = System::Drawing::Size(56, 20);
 			this->txtP4k->TabIndex = 11;
 			// 
 			// txtP4p
 			// 
 			this->txtP4p->Location = System::Drawing::Point(80, 101);
 			this->txtP4p->Name = L"txtP4p";
-			this->txtP4p->Size = System::Drawing::Size(45, 20);
+			this->txtP4p->Size = System::Drawing::Size(54, 20);
 			this->txtP4p->TabIndex = 10;
 			// 
 			// label11
@@ -369,16 +369,16 @@ namespace Gabinet {
 			// 
 			// txtP3k
 			// 
-			this->txtP3k->Location = System::Drawing::Point(131, 75);
+			this->txtP3k->Location = System::Drawing::Point(149, 75);
 			this->txtP3k->Name = L"txtP3k";
-			this->txtP3k->Size = System::Drawing::Size(45, 20);
+			this->txtP3k->Size = System::Drawing::Size(56, 20);
 			this->txtP3k->TabIndex = 8;
 			// 
 			// txtP3p
 			// 
 			this->txtP3p->Location = System::Drawing::Point(80, 75);
 			this->txtP3p->Name = L"txtP3p";
-			this->txtP3p->Size = System::Drawing::Size(45, 20);
+			this->txtP3p->Size = System::Drawing::Size(54, 20);
 			this->txtP3p->TabIndex = 7;
 			// 
 			// label10
@@ -392,16 +392,16 @@ namespace Gabinet {
 			// 
 			// txtP2k
 			// 
-			this->txtP2k->Location = System::Drawing::Point(131, 49);
+			this->txtP2k->Location = System::Drawing::Point(149, 49);
 			this->txtP2k->Name = L"txtP2k";
-			this->txtP2k->Size = System::Drawing::Size(45, 20);
+			this->txtP2k->Size = System::Drawing::Size(56, 20);
 			this->txtP2k->TabIndex = 5;
 			// 
 			// txtP2p
 			// 
 			this->txtP2p->Location = System::Drawing::Point(80, 49);
 			this->txtP2p->Name = L"txtP2p";
-			this->txtP2p->Size = System::Drawing::Size(45, 20);
+			this->txtP2p->Size = System::Drawing::Size(54, 20);
 			this->txtP2p->TabIndex = 4;
 			// 
 			// label9
@@ -415,16 +415,16 @@ namespace Gabinet {
 			// 
 			// txtP1k
 			// 
-			this->txtP1k->Location = System::Drawing::Point(131, 23);
+			this->txtP1k->Location = System::Drawing::Point(149, 23);
 			this->txtP1k->Name = L"txtP1k";
-			this->txtP1k->Size = System::Drawing::Size(45, 20);
+			this->txtP1k->Size = System::Drawing::Size(56, 20);
 			this->txtP1k->TabIndex = 2;
 			// 
 			// txtP1p
 			// 
 			this->txtP1p->Location = System::Drawing::Point(80, 23);
 			this->txtP1p->Name = L"txtP1p";
-			this->txtP1p->Size = System::Drawing::Size(45, 20);
+			this->txtP1p->Size = System::Drawing::Size(54, 20);
 			this->txtP1p->TabIndex = 1;
 			// 
 			// label8
@@ -848,7 +848,8 @@ private: Void pokaz_siatke() {
 					polecenie->CommandText = "insert into godziny set uzytkownik_id=last_insert_id(), pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
 					polecenie->ExecuteNonQuery();
 				}
-					transakcja->Commit();				
+					transakcja->Commit();
+					MessageBox::Show("Użytkownik został Dodany");
 			}
 			catch (Exception^ komunikat) {
 				MessageBox::Show(komunikat->Message);
@@ -904,6 +905,7 @@ private: Void pokaz_siatke() {
 				}
 				wynik->Close();
 				transakcja->Commit();
+				MessageBox::Show("Dane uzytkownika zostały zmodyfikowane");
 			}
 			catch (Exception^ komunikat) {
 				MessageBox::Show(komunikat->Message);
