@@ -62,23 +62,35 @@ namespace Gabinet {
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::TextBox^  textBox11;
-	private: System::Windows::Forms::TextBox^  textBox12;
+	private: System::Windows::Forms::TextBox^  txtP6k;
+
+	private: System::Windows::Forms::TextBox^  txtP6p;
+
 	private: System::Windows::Forms::Label^  label13;
-	private: System::Windows::Forms::TextBox^  textBox9;
-	private: System::Windows::Forms::TextBox^  textBox10;
+	private: System::Windows::Forms::TextBox^  txtP5k;
+
+	private: System::Windows::Forms::TextBox^  txtP5p;
+
 	private: System::Windows::Forms::Label^  label12;
-	private: System::Windows::Forms::TextBox^  textBox7;
-	private: System::Windows::Forms::TextBox^  textBox8;
+	private: System::Windows::Forms::TextBox^  txtP4k;
+
+	private: System::Windows::Forms::TextBox^  txtP4p;
+
 	private: System::Windows::Forms::Label^  label11;
-	private: System::Windows::Forms::TextBox^  textBox5;
-	private: System::Windows::Forms::TextBox^  textBox6;
+	private: System::Windows::Forms::TextBox^  txtP3k;
+
+	private: System::Windows::Forms::TextBox^  txtP3p;
+
 	private: System::Windows::Forms::Label^  label10;
-	private: System::Windows::Forms::TextBox^  textBox3;
-	private: System::Windows::Forms::TextBox^  textBox4;
+	private: System::Windows::Forms::TextBox^  txtP2k;
+
+	private: System::Windows::Forms::TextBox^  txtP2p;
+
 	private: System::Windows::Forms::Label^  label9;
-	private: System::Windows::Forms::TextBox^  textBox2;
-	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  txtP1k;
+
+	private: System::Windows::Forms::TextBox^  txtP1p;
+
 	private: System::Windows::Forms::Label^  label8;
 	public:
 		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
@@ -122,23 +134,23 @@ namespace Gabinet {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->txtP6k = (gcnew System::Windows::Forms::TextBox());
+			this->txtP6p = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->txtP5k = (gcnew System::Windows::Forms::TextBox());
+			this->txtP5p = (gcnew System::Windows::Forms::TextBox());
 			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->txtP4k = (gcnew System::Windows::Forms::TextBox());
+			this->txtP4p = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->txtP3k = (gcnew System::Windows::Forms::TextBox());
+			this->txtP3p = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->txtP2k = (gcnew System::Windows::Forms::TextBox());
+			this->txtP2p = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->txtP1k = (gcnew System::Windows::Forms::TextBox());
+			this->txtP1p = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->btnPDodaj = (gcnew System::Windows::Forms::Button());
 			this->btnPModyfikuj = (gcnew System::Windows::Forms::Button());
@@ -207,23 +219,23 @@ namespace Gabinet {
 			// gbGodziny
 			// 
 			this->gbGodziny->Controls->Add(this->groupBox4);
-			this->gbGodziny->Controls->Add(this->textBox11);
-			this->gbGodziny->Controls->Add(this->textBox12);
+			this->gbGodziny->Controls->Add(this->txtP6k);
+			this->gbGodziny->Controls->Add(this->txtP6p);
 			this->gbGodziny->Controls->Add(this->label13);
-			this->gbGodziny->Controls->Add(this->textBox9);
-			this->gbGodziny->Controls->Add(this->textBox10);
+			this->gbGodziny->Controls->Add(this->txtP5k);
+			this->gbGodziny->Controls->Add(this->txtP5p);
 			this->gbGodziny->Controls->Add(this->label12);
-			this->gbGodziny->Controls->Add(this->textBox7);
-			this->gbGodziny->Controls->Add(this->textBox8);
+			this->gbGodziny->Controls->Add(this->txtP4k);
+			this->gbGodziny->Controls->Add(this->txtP4p);
 			this->gbGodziny->Controls->Add(this->label11);
-			this->gbGodziny->Controls->Add(this->textBox5);
-			this->gbGodziny->Controls->Add(this->textBox6);
+			this->gbGodziny->Controls->Add(this->txtP3k);
+			this->gbGodziny->Controls->Add(this->txtP3p);
 			this->gbGodziny->Controls->Add(this->label10);
-			this->gbGodziny->Controls->Add(this->textBox3);
-			this->gbGodziny->Controls->Add(this->textBox4);
+			this->gbGodziny->Controls->Add(this->txtP2k);
+			this->gbGodziny->Controls->Add(this->txtP2p);
 			this->gbGodziny->Controls->Add(this->label9);
-			this->gbGodziny->Controls->Add(this->textBox2);
-			this->gbGodziny->Controls->Add(this->textBox1);
+			this->gbGodziny->Controls->Add(this->txtP1k);
+			this->gbGodziny->Controls->Add(this->txtP1p);
 			this->gbGodziny->Controls->Add(this->label8);
 			this->gbGodziny->Location = System::Drawing::Point(37, 192);
 			this->gbGodziny->Name = L"gbGodziny";
@@ -282,19 +294,19 @@ namespace Gabinet {
 			this->button1->Text = L"7-15";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
-			// textBox11
+			// txtP6k
 			// 
-			this->textBox11->Location = System::Drawing::Point(131, 153);
-			this->textBox11->Name = L"textBox11";
-			this->textBox11->Size = System::Drawing::Size(45, 20);
-			this->textBox11->TabIndex = 17;
+			this->txtP6k->Location = System::Drawing::Point(131, 153);
+			this->txtP6k->Name = L"txtP6k";
+			this->txtP6k->Size = System::Drawing::Size(45, 20);
+			this->txtP6k->TabIndex = 17;
 			// 
-			// textBox12
+			// txtP6p
 			// 
-			this->textBox12->Location = System::Drawing::Point(80, 153);
-			this->textBox12->Name = L"textBox12";
-			this->textBox12->Size = System::Drawing::Size(45, 20);
-			this->textBox12->TabIndex = 16;
+			this->txtP6p->Location = System::Drawing::Point(80, 153);
+			this->txtP6p->Name = L"txtP6p";
+			this->txtP6p->Size = System::Drawing::Size(45, 20);
+			this->txtP6p->TabIndex = 16;
 			// 
 			// label13
 			// 
@@ -305,19 +317,19 @@ namespace Gabinet {
 			this->label13->TabIndex = 15;
 			this->label13->Text = L"Sobota";
 			// 
-			// textBox9
+			// txtP5k
 			// 
-			this->textBox9->Location = System::Drawing::Point(131, 127);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(45, 20);
-			this->textBox9->TabIndex = 14;
+			this->txtP5k->Location = System::Drawing::Point(131, 127);
+			this->txtP5k->Name = L"txtP5k";
+			this->txtP5k->Size = System::Drawing::Size(45, 20);
+			this->txtP5k->TabIndex = 14;
 			// 
-			// textBox10
+			// txtP5p
 			// 
-			this->textBox10->Location = System::Drawing::Point(80, 127);
-			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(45, 20);
-			this->textBox10->TabIndex = 13;
+			this->txtP5p->Location = System::Drawing::Point(80, 127);
+			this->txtP5p->Name = L"txtP5p";
+			this->txtP5p->Size = System::Drawing::Size(45, 20);
+			this->txtP5p->TabIndex = 13;
 			// 
 			// label12
 			// 
@@ -328,19 +340,19 @@ namespace Gabinet {
 			this->label12->TabIndex = 12;
 			this->label12->Text = L"Piątek";
 			// 
-			// textBox7
+			// txtP4k
 			// 
-			this->textBox7->Location = System::Drawing::Point(131, 101);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(45, 20);
-			this->textBox7->TabIndex = 11;
+			this->txtP4k->Location = System::Drawing::Point(131, 101);
+			this->txtP4k->Name = L"txtP4k";
+			this->txtP4k->Size = System::Drawing::Size(45, 20);
+			this->txtP4k->TabIndex = 11;
 			// 
-			// textBox8
+			// txtP4p
 			// 
-			this->textBox8->Location = System::Drawing::Point(80, 101);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(45, 20);
-			this->textBox8->TabIndex = 10;
+			this->txtP4p->Location = System::Drawing::Point(80, 101);
+			this->txtP4p->Name = L"txtP4p";
+			this->txtP4p->Size = System::Drawing::Size(45, 20);
+			this->txtP4p->TabIndex = 10;
 			// 
 			// label11
 			// 
@@ -351,19 +363,19 @@ namespace Gabinet {
 			this->label11->TabIndex = 9;
 			this->label11->Text = L"Czwartek";
 			// 
-			// textBox5
+			// txtP3k
 			// 
-			this->textBox5->Location = System::Drawing::Point(131, 75);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(45, 20);
-			this->textBox5->TabIndex = 8;
+			this->txtP3k->Location = System::Drawing::Point(131, 75);
+			this->txtP3k->Name = L"txtP3k";
+			this->txtP3k->Size = System::Drawing::Size(45, 20);
+			this->txtP3k->TabIndex = 8;
 			// 
-			// textBox6
+			// txtP3p
 			// 
-			this->textBox6->Location = System::Drawing::Point(80, 75);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(45, 20);
-			this->textBox6->TabIndex = 7;
+			this->txtP3p->Location = System::Drawing::Point(80, 75);
+			this->txtP3p->Name = L"txtP3p";
+			this->txtP3p->Size = System::Drawing::Size(45, 20);
+			this->txtP3p->TabIndex = 7;
 			// 
 			// label10
 			// 
@@ -374,19 +386,19 @@ namespace Gabinet {
 			this->label10->TabIndex = 6;
 			this->label10->Text = L"Środa";
 			// 
-			// textBox3
+			// txtP2k
 			// 
-			this->textBox3->Location = System::Drawing::Point(131, 49);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(45, 20);
-			this->textBox3->TabIndex = 5;
+			this->txtP2k->Location = System::Drawing::Point(131, 49);
+			this->txtP2k->Name = L"txtP2k";
+			this->txtP2k->Size = System::Drawing::Size(45, 20);
+			this->txtP2k->TabIndex = 5;
 			// 
-			// textBox4
+			// txtP2p
 			// 
-			this->textBox4->Location = System::Drawing::Point(80, 49);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(45, 20);
-			this->textBox4->TabIndex = 4;
+			this->txtP2p->Location = System::Drawing::Point(80, 49);
+			this->txtP2p->Name = L"txtP2p";
+			this->txtP2p->Size = System::Drawing::Size(45, 20);
+			this->txtP2p->TabIndex = 4;
 			// 
 			// label9
 			// 
@@ -397,19 +409,19 @@ namespace Gabinet {
 			this->label9->TabIndex = 3;
 			this->label9->Text = L"Wtorek";
 			// 
-			// textBox2
+			// txtP1k
 			// 
-			this->textBox2->Location = System::Drawing::Point(131, 23);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(45, 20);
-			this->textBox2->TabIndex = 2;
+			this->txtP1k->Location = System::Drawing::Point(131, 23);
+			this->txtP1k->Name = L"txtP1k";
+			this->txtP1k->Size = System::Drawing::Size(45, 20);
+			this->txtP1k->TabIndex = 2;
 			// 
-			// textBox1
+			// txtP1p
 			// 
-			this->textBox1->Location = System::Drawing::Point(80, 23);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(45, 20);
-			this->textBox1->TabIndex = 1;
+			this->txtP1p->Location = System::Drawing::Point(80, 23);
+			this->txtP1p->Name = L"txtP1p";
+			this->txtP1p->Size = System::Drawing::Size(45, 20);
+			this->txtP1p->TabIndex = 1;
 			// 
 			// label8
 			// 
@@ -722,6 +734,7 @@ private: Void pokaz_siatke() {
 	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik order by nazwisko", laczBaze);
 	try
 	{
+		laczBaze->Open();
 		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
 		moja->SelectCommand = zapytanie;
 		DataTable^ tabela = gcnew DataTable();
@@ -741,6 +754,7 @@ private: Void pokaz_siatke() {
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%" + txtPSzukaj->Text + "%' order by nazwisko", laczBaze);
 		try
 		{
+			laczBaze->Open();
 			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
 			moja->SelectCommand = zapytanie;
 			DataTable^ tabela = gcnew DataTable();
@@ -766,6 +780,42 @@ private: Void pokaz_siatke() {
 			chbPPracownik->Checked = Convert::ToBoolean(dgUzytkownicy->Rows[e->RowIndex]->Cells["pracownik"]->Value);
 			btnPModyfikuj->Enabled = true;
 			btnPUsun->Enabled = true;
+			//odczyt i wyswietlenie godzin
+			if (chbPPracownik->Checked) {
+				MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from godziny where uzytkownik_id="+id_rekordu+"", laczBaze);
+				MySqlDataReader^ dane;
+				try
+				{
+					laczBaze->Open();
+					dane = zapytanie->ExecuteReader();
+					while (dane->Read())
+					{
+						txtP1p->Text = dane->GetString("pon_od");
+						txtP1k->Text = dane->GetString("pon_do");
+
+						txtP2p->Text = dane->GetString("wt_od");
+						txtP2k->Text = dane->GetString("wt_do");
+
+						txtP2p->Text = dane->GetString("sr_od");
+						txtP2k->Text = dane->GetString("sr_do");
+
+						txtP2p->Text = dane->GetString("cz_od");
+						txtP2k->Text = dane->GetString("cz_do");
+
+						txtP2p->Text = dane->GetString("pt_od");
+						txtP2k->Text = dane->GetString("pt_do");
+
+						txtP2p->Text = dane->GetString("so_od");
+						txtP2k->Text = dane->GetString("so_do");
+
+					}
+					laczBaze->Close();
+				}
+				catch (Exception^ komunikat) {
+					MessageBox::Show(komunikat->Message);
+				}
+			}
 
 		}
 	}
@@ -786,7 +836,11 @@ private: Void pokaz_siatke() {
 
 			polecenie->Transaction = transakcja;
 			try{
+				//INSERT INTO UZYTKOWNIK
 				polecenie->CommandText = "insert into uzytkownik set imie='"+txtPImie->Text+"', nazwisko='"+txtPNazwisko->Text+"', uzytkownik_nazwa = '"+txtPLogin->Text+"', haslo = password('"+txtPLogin->Text+"'), pracownik = "+pracownik_typ+"";
+				polecenie->ExecuteNonQuery();
+				//INSERT INTO GODZINY
+				polecenie->CommandText = "insert into godziny set uzytkownik_id=last_insert_id(), pon_od = '"+txtP1p->Text+"', pon_do = '"+txtP1k->Text+"', wt_od = '"+txtP2p->Text+"', wt_do = '"+txtP2k->Text+"', sr_od = '"+txtP3p->Text+"', sr_do = '"+txtP3k->Text+"', cz_od = '"+txtP4p->Text+"', cz_do = '"+txtP4k->Text+"', pt_od = '"+txtP5p->Text+"', pt_do = '"+txtP5k->Text+"', so_od = '"+txtP6p->Text+"', so_do = '"+txtP6k->Text+"'";
 				polecenie->ExecuteNonQuery();
 				transakcja->Commit();
 			}
@@ -863,8 +917,13 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 		polecenie->Transaction = transakcja;
 		try {
 			if (MessageBox::Show("Czy usunąć użytkownika?", "UWAGA!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
+				//usunięcie godziń
+				polecenie->CommandText = "delete from godziny where uzytkownik_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+				//usunięcie użytkownika
 				polecenie->CommandText = "delete from uzytkownik where uzytkownik_id = " + id_rekordu + "; ";
 				polecenie->ExecuteNonQuery();
+
 				transakcja->Commit();
 				MessageBox::Show("Użytkownik został usunięty");
 			}
@@ -882,12 +941,8 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 	pokaz_siatke();
 }
 private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (chbPPracownik->Checked) {
-		gbGodziny->Visible = true;
-	}
-	else{
-		gbGodziny->Visible = false;
-	}
+	if (chbPPracownik->Checked)	gbGodziny->Visible = true;
+	else gbGodziny->Visible = false;
 }
 };
 }
