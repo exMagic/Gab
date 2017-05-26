@@ -17,7 +17,7 @@ namespace Gabinet {
 	{
 	public:
 		int id_uzytkownika;
-		bool powodzenie;
+		bool powodzenie = false;
 
 	private: System::Windows::Forms::Button^  btnPSzukaj;
 	private: System::Windows::Forms::TextBox^  txtPSzukaj;
@@ -826,6 +826,7 @@ private: Void pokaz_siatke() {
 	}
 	private: System::Void btnPDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
 		//dodawanie uzytkownikow do bazy
+		powodzenie = false;
 		if (txtPImie->Text->Length < 2 || txtPNazwisko->Text->Length < 2 || txtPLogin->Text->Length < 2) {
 			MessageBox::Show("uzupełnij dane!");
 		}
@@ -873,6 +874,7 @@ private: Void pokaz_siatke() {
 	}
 	private: System::Void btnPModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
 		//modyfikacja danych użytkownika
+		powodzenie = false;
 		if (txtPImie->Text->Length < 2 || txtPNazwisko->Text->Length < 2 || txtPLogin->Text->Length < 2) {
 			MessageBox::Show("uzupełnij dane!");
 		}
@@ -928,45 +930,46 @@ private: Void wyczysc(Control^ zbior) {
 	}
 }
 
-private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^  e) {
-	//usuniecie uzytkownika
-	if (id_rekordu==1) {
-		MessageBox::Show("nie można usunąć administratora!");
-	}
-	else {
-		uzytkownik_typ();
-		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-		MySqlCommand^ polecenie = laczBaze->CreateCommand();
-		MySqlTransaction^ transakcja;
-		laczBaze->Open();
-		transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
-		polecenie->Connection = laczBaze;
-		polecenie->Transaction = transakcja;
-		try {
-			if (MessageBox::Show("Czy usunąć użytkownika?", "UWAGA!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
-				//usunięcie godziń
-				polecenie->CommandText = "delete from godziny where uzytkownik_id = " + id_rekordu + "; ";
-				polecenie->ExecuteNonQuery();
-				//usunięcie użytkownika
-				polecenie->CommandText = "delete from uzytkownik where uzytkownik_id = " + id_rekordu + "; ";
-				polecenie->ExecuteNonQuery();
+	private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^  e) {
+		//usuniecie uzytkownika
+		powodzenie = false;
+		if (id_rekordu == 1) {
+			MessageBox::Show("nie można usunąć administratora!");
+		}
+		else {
+			uzytkownik_typ();
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+			polecenie->Connection = laczBaze;
+			polecenie->Transaction = transakcja;
+			try {
+				if (MessageBox::Show("Czy usunąć użytkownika?", "UWAGA!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes) {
+					//usunięcie godziń
+					polecenie->CommandText = "delete from godziny where uzytkownik_id = " + id_rekordu + "; ";
+					polecenie->ExecuteNonQuery();
+					//usunięcie użytkownika
+					polecenie->CommandText = "delete from uzytkownik where uzytkownik_id = " + id_rekordu + "; ";
+					polecenie->ExecuteNonQuery();
 
-				transakcja->Commit();
-				powodzenie = true;
+					transakcja->Commit();
+					powodzenie = true;
+				}
 			}
-		}
-		catch (Exception^ komunikat) {
-			MessageBox::Show(komunikat->Message);
-			transakcja->Rollback();
-		}
-		laczBaze->Close();
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+			}
+			laczBaze->Close();
 
-	}
-	wyczysc(groupBox2);
-	chbPPracownik->Checked = false;
+		}
+		wyczysc(groupBox2);
+		chbPPracownik->Checked = false;
 
-	pokaz_siatke();
-	if (powodzenie)MessageBox::Show("Użytkownik został usunięty");
+		pokaz_siatke();
+		if (powodzenie)MessageBox::Show("Użytkownik został usunięty");
 }
 private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (chbPPracownik->Checked)	gbGodziny->Visible = true;
