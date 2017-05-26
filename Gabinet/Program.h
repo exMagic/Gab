@@ -56,7 +56,7 @@ namespace Gabinet {
 	private: System::Windows::Forms::Button^  btnPModyfikuj;
 	private: System::Windows::Forms::Button^  btnPUsun;
 	public:
-		String^ konfiguracja = L"datasource=127.0.0.1;port=3306;username=root;password=kolanko7;database=gabinet";
+		String^ konfiguracja = L"datasource=10.0.0.112;port=3306;username=toor;password=kolankokolanko7;database=gabinet";
 		Program(int uzytkownik)
 		{
 			InitializeComponent();
