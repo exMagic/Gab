@@ -840,9 +840,11 @@ private: Void pokaz_siatke() {
 				polecenie->CommandText = "insert into uzytkownik set imie='"+txtPImie->Text+"', nazwisko='"+txtPNazwisko->Text+"', uzytkownik_nazwa = '"+txtPLogin->Text+"', haslo = password('"+txtPLogin->Text+"'), pracownik = "+pracownik_typ+"";
 				polecenie->ExecuteNonQuery();
 				//INSERT INTO GODZINY
-				polecenie->CommandText = "insert into godziny set uzytkownik_id=last_insert_id(), pon_od = '"+txtP1p->Text+"', pon_do = '"+txtP1k->Text+"', wt_od = '"+txtP2p->Text+"', wt_do = '"+txtP2k->Text+"', sr_od = '"+txtP3p->Text+"', sr_do = '"+txtP3k->Text+"', cz_od = '"+txtP4p->Text+"', cz_do = '"+txtP4k->Text+"', pt_od = '"+txtP5p->Text+"', pt_do = '"+txtP5k->Text+"', so_od = '"+txtP6p->Text+"', so_do = '"+txtP6k->Text+"'";
-				polecenie->ExecuteNonQuery();
-				transakcja->Commit();
+				if (chbPPracownik->Checked) {
+					polecenie->CommandText = "insert into godziny set uzytkownik_id=last_insert_id(), pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
+					polecenie->ExecuteNonQuery();
+				}
+					transakcja->Commit();				
 			}
 			catch (Exception^ komunikat) {
 				MessageBox::Show(komunikat->Message);
@@ -879,8 +881,22 @@ private: Void pokaz_siatke() {
 
 			polecenie->Transaction = transakcja;
 			try {
+				polecenie->CommandText = "select * from godziny where uzytkownik_id=" + id_rekordu + "";
+				MySqlDataReader^ wynik = polecenie->ExecuteReader();
+				wynik->Close();
+
 				polecenie->CommandText = "update uzytkownik set imie='" + txtPImie->Text + "', nazwisko='" + txtPNazwisko->Text + "', uzytkownik_nazwa = '" + txtPLogin->Text + "', pracownik = " + pracownik_typ + " where uzytkownik_id = " + id_rekordu + "; ";
 				polecenie->ExecuteNonQuery();
+
+				if (wynik->HasRows && chbPPracownik->Checked){
+					polecenie->CommandText = "update godziny set pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "' where uzytkownik_id="+id_rekordu+"";
+					polecenie->ExecuteNonQuery();
+				}
+				else if(chbPPracownik->Checked) {
+					polecenie->CommandText = "insert into godziny set uzytkownik_id="+id_rekordu+", pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
+					polecenie->ExecuteNonQuery();
+				}
+				
 				transakcja->Commit();
 			}
 			catch (Exception^ komunikat) {
@@ -943,6 +959,7 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (chbPPracownik->Checked)	gbGodziny->Visible = true;
 	else gbGodziny->Visible = false;
+	wyczysc(gbGodziny);
 }
 };
 }
