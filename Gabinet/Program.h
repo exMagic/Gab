@@ -293,6 +293,7 @@ namespace Gabinet {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"7-15";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Program::button1_Click);
 			// 
 			// txtP6k
 			// 
@@ -797,17 +798,17 @@ private: Void pokaz_siatke() {
 						txtP2p->Text = dane->GetString("wt_od");
 						txtP2k->Text = dane->GetString("wt_do");
 
-						txtP2p->Text = dane->GetString("sr_od");
-						txtP2k->Text = dane->GetString("sr_do");
+						txtP3p->Text = dane->GetString("sr_od");
+						txtP3k->Text = dane->GetString("sr_do");
 
-						txtP2p->Text = dane->GetString("cz_od");
-						txtP2k->Text = dane->GetString("cz_do");
+						txtP4p->Text = dane->GetString("cz_od");
+						txtP4k->Text = dane->GetString("cz_do");
 
-						txtP2p->Text = dane->GetString("pt_od");
-						txtP2k->Text = dane->GetString("pt_do");
+						txtP5p->Text = dane->GetString("pt_od");
+						txtP5k->Text = dane->GetString("pt_do");
 
-						txtP2p->Text = dane->GetString("so_od");
-						txtP2k->Text = dane->GetString("so_do");
+						txtP6p->Text = dane->GetString("so_od");
+						txtP6k->Text = dane->GetString("so_do");
 
 					}
 					laczBaze->Close();
@@ -883,20 +884,22 @@ private: Void pokaz_siatke() {
 			try {
 				polecenie->CommandText = "select * from godziny where uzytkownik_id=" + id_rekordu + "";
 				MySqlDataReader^ wynik = polecenie->ExecuteReader();
+				bool maGodziny = wynik->HasRows;
 				wynik->Close();
 
 				polecenie->CommandText = "update uzytkownik set imie='" + txtPImie->Text + "', nazwisko='" + txtPNazwisko->Text + "', uzytkownik_nazwa = '" + txtPLogin->Text + "', pracownik = " + pracownik_typ + " where uzytkownik_id = " + id_rekordu + "; ";
 				polecenie->ExecuteNonQuery();
-
-				if (wynik->HasRows && chbPPracownik->Checked){
+				if (maGodziny && chbPPracownik->Checked){
+					//MessageBox::Show("update");
 					polecenie->CommandText = "update godziny set pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "' where uzytkownik_id="+id_rekordu+"";
 					polecenie->ExecuteNonQuery();
 				}
 				else if(chbPPracownik->Checked) {
+					//MessageBox::Show("insert");
 					polecenie->CommandText = "insert into godziny set uzytkownik_id="+id_rekordu+", pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
 					polecenie->ExecuteNonQuery();
 				}
-				
+				wynik->Close();
 				transakcja->Commit();
 			}
 			catch (Exception^ komunikat) {
@@ -960,6 +963,14 @@ private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, Syst
 	if (chbPPracownik->Checked)	gbGodziny->Visible = true;
 	else gbGodziny->Visible = false;
 	wyczysc(gbGodziny);
+}
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	array<TextBox^> ^ czas_start = {txtP1p, txtP2p, txtP3p ,txtP4p ,txtP5p ,txtP6p };
+	array<TextBox^> ^ czas_stop = { txtP1k, txtP2k, txtP3k ,txtP4k ,txtP5k ,txtP6k };
+	for (int i = 0; i <=5; i++){
+		czas_start[i]->Text = "7:00";
+		czas_stop[i]->Text = "15:00";
+	}
 }
 };
 }
