@@ -17,6 +17,7 @@ namespace Gabinet {
 	{
 	public:
 		int id_uzytkownika;
+		bool powodzenie;
 
 	private: System::Windows::Forms::Button^  btnPSzukaj;
 	private: System::Windows::Forms::TextBox^  txtPSzukaj;
@@ -849,7 +850,7 @@ private: Void pokaz_siatke() {
 					polecenie->ExecuteNonQuery();
 				}
 					transakcja->Commit();
-					MessageBox::Show("Użytkownik został Dodany");
+					powodzenie = true;
 			}
 			catch (Exception^ komunikat) {
 				MessageBox::Show(komunikat->Message);
@@ -860,6 +861,7 @@ private: Void pokaz_siatke() {
 
 		}
 		pokaz_siatke();
+		if (powodzenie)MessageBox::Show("Użytkownik został Dodany");
 	}
 	private: Void uzytkownik_typ() {
 		if (chbPPracownik->Checked) {
@@ -893,19 +895,19 @@ private: Void pokaz_siatke() {
 
 				polecenie->CommandText = "update uzytkownik set imie='" + txtPImie->Text + "', nazwisko='" + txtPNazwisko->Text + "', uzytkownik_nazwa = '" + txtPLogin->Text + "', pracownik = " + pracownik_typ + " where uzytkownik_id = " + id_rekordu + "; ";
 				polecenie->ExecuteNonQuery();
-				if (maGodziny && chbPPracownik->Checked){
+				if (maGodziny && chbPPracownik->Checked) {
 					//MessageBox::Show("update");
-					polecenie->CommandText = "update godziny set pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "' where uzytkownik_id="+id_rekordu+"";
+					polecenie->CommandText = "update godziny set pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "' where uzytkownik_id=" + id_rekordu + "";
 					polecenie->ExecuteNonQuery();
 				}
-				else if(chbPPracownik->Checked) {
+				else if (chbPPracownik->Checked) {
 					//MessageBox::Show("insert");
-					polecenie->CommandText = "insert into godziny set uzytkownik_id="+id_rekordu+", pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
+					polecenie->CommandText = "insert into godziny set uzytkownik_id=" + id_rekordu + ", pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
 					polecenie->ExecuteNonQuery();
 				}
 				wynik->Close();
 				transakcja->Commit();
-				MessageBox::Show("Dane uzytkownika zostały zmodyfikowane");
+				powodzenie = true;
 			}
 			catch (Exception^ komunikat) {
 				MessageBox::Show(komunikat->Message);
@@ -916,6 +918,7 @@ private: Void pokaz_siatke() {
 
 		}
 		pokaz_siatke();
+		if (powodzenie)MessageBox::Show("Dane uzytkownika zostały zmodyfikowane");
 	}
 private: Void wyczysc(Control^ zbior) {
 	for each(Control^ element in zbior->Controls) {
@@ -949,7 +952,7 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 				polecenie->ExecuteNonQuery();
 
 				transakcja->Commit();
-				MessageBox::Show("Użytkownik został usunięty");
+				powodzenie = true;
 			}
 		}
 		catch (Exception^ komunikat) {
@@ -963,6 +966,7 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 	chbPPracownik->Checked = false;
 
 	pokaz_siatke();
+	if (powodzenie)MessageBox::Show("Użytkownik został usunięty");
 }
 private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (chbPPracownik->Checked)	gbGodziny->Visible = true;
