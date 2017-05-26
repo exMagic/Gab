@@ -266,6 +266,7 @@ namespace Gabinet {
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"10-18";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &Program::button4_Click);
 			// 
 			// button3
 			// 
@@ -275,6 +276,7 @@ namespace Gabinet {
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"9-17";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &Program::button3_Click);
 			// 
 			// button2
 			// 
@@ -284,6 +286,7 @@ namespace Gabinet {
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"8-16";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Program::button2_Click);
 			// 
 			// button1
 			// 
@@ -964,13 +967,26 @@ private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, Syst
 	else gbGodziny->Visible = false;
 	wyczysc(gbGodziny);
 }
+
+private: void czas_pracy(int czasStart) {
+		array<TextBox^> ^ czas_start = { txtP1p, txtP2p, txtP3p ,txtP4p ,txtP5p ,txtP6p };
+		array<TextBox^> ^ czas_stop = { txtP1k, txtP2k, txtP3k ,txtP4k ,txtP5k ,txtP6k };
+		for (int i = 0; i <= 5; i++) {
+			czas_start[i]->Text = czasStart + ":00";
+			czas_stop[i]->Text = czasStart+8 + ":00";
+		}
+}
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	array<TextBox^> ^ czas_start = {txtP1p, txtP2p, txtP3p ,txtP4p ,txtP5p ,txtP6p };
-	array<TextBox^> ^ czas_stop = { txtP1k, txtP2k, txtP3k ,txtP4k ,txtP5k ,txtP6k };
-	for (int i = 0; i <=5; i++){
-		czas_start[i]->Text = "7:00";
-		czas_stop[i]->Text = "15:00";
-	}
+	czas_pracy(7);
+}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	czas_pracy(8);
+}
+private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+	czas_pracy(9);
+}
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+	czas_pracy(10);
 }
 };
 }
