@@ -36,11 +36,15 @@ namespace Gabinet {
 	private: System::Windows::Forms::CheckBox^  chbPPracownik;
 
 	private: System::Windows::Forms::TabControl^  tabControl1;
-	private: System::Windows::Forms::TabPage^  s;
-
-
-
 	private: System::Windows::Forms::TabPage^  tabPage2;
+	private: System::Windows::Forms::TabPage^  tabPage1;
+
+
+
+
+
+
+
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::TextBox^  txtHStare;
 	private: System::Windows::Forms::Button^  btnHZmien;
@@ -93,6 +97,25 @@ namespace Gabinet {
 	private: System::Windows::Forms::TextBox^  txtP1p;
 
 	private: System::Windows::Forms::Label^  label8;
+	private: System::Windows::Forms::TabPage^  tabPage3;
+	private: System::Windows::Forms::Button^  btnUUsun;
+	private: System::Windows::Forms::Button^  btnUModyfikuj;
+	private: System::Windows::Forms::Button^  btnUDodaj;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::TextBox^  txtUOpis;
+	private: System::Windows::Forms::TextBox^  txtUCzas;
+	private: System::Windows::Forms::TextBox^  txtUCena;
+	private: System::Windows::Forms::TextBox^  txtUNazwa;
+	private: System::Windows::Forms::Label^  label18;
+	private: System::Windows::Forms::Label^  label17;
+	private: System::Windows::Forms::Label^  label16;
+	private: System::Windows::Forms::Label^  label15;
+	private: System::Windows::Forms::DataGridView^  dgUslugi;
+	private: System::Windows::Forms::Button^  button5;
+	private: System::Windows::Forms::TextBox^  txtUSzukaj;
+	private: System::Windows::Forms::Label^  label14;
+
+
 	public:
 		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=kolanko7;database=gabinet";
 		Program(int uzytkownik)
@@ -128,7 +151,7 @@ namespace Gabinet {
 		void InitializeComponent(void)
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
-			this->s = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->gbGodziny = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -168,7 +191,7 @@ namespace Gabinet {
 			this->txtPSzukaj = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->dgUzytkownicy = (gcnew System::Windows::Forms::DataGridView());
-			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtHStare = (gcnew System::Windows::Forms::TextBox());
 			this->btnHZmien = (gcnew System::Windows::Forms::Button());
@@ -177,45 +200,66 @@ namespace Gabinet {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->txtUSzukaj = (gcnew System::Windows::Forms::TextBox());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->dgUslugi = (gcnew System::Windows::Forms::DataGridView());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->txtUNazwa = (gcnew System::Windows::Forms::TextBox());
+			this->txtUCena = (gcnew System::Windows::Forms::TextBox());
+			this->txtUCzas = (gcnew System::Windows::Forms::TextBox());
+			this->txtUOpis = (gcnew System::Windows::Forms::TextBox());
+			this->btnUDodaj = (gcnew System::Windows::Forms::Button());
+			this->btnUModyfikuj = (gcnew System::Windows::Forms::Button());
+			this->btnUUsun = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
-			this->s->SuspendLayout();
+			this->tabPage2->SuspendLayout();
 			this->gbGodziny->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUzytkownicy))->BeginInit();
-			this->tabPage2->SuspendLayout();
+			this->tabPage1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			this->tabPage3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUslugi))->BeginInit();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// tabControl1
 			// 
 			this->tabControl1->Alignment = System::Windows::Forms::TabAlignment::Bottom;
-			this->tabControl1->Controls->Add(this->s);
+			this->tabControl1->Controls->Add(this->tabPage3);
 			this->tabControl1->Controls->Add(this->tabPage2);
+			this->tabControl1->Controls->Add(this->tabPage1);
 			this->tabControl1->Location = System::Drawing::Point(29, 62);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
 			this->tabControl1->Size = System::Drawing::Size(803, 558);
 			this->tabControl1->TabIndex = 0;
 			// 
-			// s
+			// tabPage2
 			// 
-			this->s->Controls->Add(this->gbGodziny);
-			this->s->Controls->Add(this->btnPDodaj);
-			this->s->Controls->Add(this->btnPModyfikuj);
-			this->s->Controls->Add(this->btnPUsun);
-			this->s->Controls->Add(this->groupBox2);
-			this->s->Controls->Add(this->btnPSzukaj);
-			this->s->Controls->Add(this->txtPSzukaj);
-			this->s->Controls->Add(this->label4);
-			this->s->Controls->Add(this->dgUzytkownicy);
-			this->s->Location = System::Drawing::Point(4, 4);
-			this->s->Name = L"s";
-			this->s->Padding = System::Windows::Forms::Padding(3);
-			this->s->Size = System::Drawing::Size(795, 532);
-			this->s->TabIndex = 0;
-			this->s->Text = L"Pracownicy";
-			this->s->UseVisualStyleBackColor = true;
+			this->tabPage2->Controls->Add(this->gbGodziny);
+			this->tabPage2->Controls->Add(this->btnPDodaj);
+			this->tabPage2->Controls->Add(this->btnPModyfikuj);
+			this->tabPage2->Controls->Add(this->btnPUsun);
+			this->tabPage2->Controls->Add(this->groupBox2);
+			this->tabPage2->Controls->Add(this->btnPSzukaj);
+			this->tabPage2->Controls->Add(this->txtPSzukaj);
+			this->tabPage2->Controls->Add(this->label4);
+			this->tabPage2->Controls->Add(this->dgUzytkownicy);
+			this->tabPage2->Location = System::Drawing::Point(4, 4);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage2->Size = System::Drawing::Size(795, 532);
+			this->tabPage2->TabIndex = 0;
+			this->tabPage2->Text = L"Pracownicy";
+			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// gbGodziny
 			// 
@@ -580,16 +624,16 @@ namespace Gabinet {
 			this->dgUzytkownicy->TabIndex = 0;
 			this->dgUzytkownicy->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Program::dgUzytkownicy_CellClick);
 			// 
-			// tabPage2
+			// tabPage1
 			// 
-			this->tabPage2->Controls->Add(this->groupBox1);
-			this->tabPage2->Location = System::Drawing::Point(4, 4);
-			this->tabPage2->Name = L"tabPage2";
-			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(795, 532);
-			this->tabPage2->TabIndex = 1;
-			this->tabPage2->Text = L"Zmiana hasła";
-			this->tabPage2->UseVisualStyleBackColor = true;
+			this->tabPage1->Controls->Add(this->groupBox1);
+			this->tabPage1->Location = System::Drawing::Point(4, 4);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage1->Size = System::Drawing::Size(795, 532);
+			this->tabPage1->TabIndex = 1;
+			this->tabPage1->Text = L"Zmiana hasła";
+			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
 			// 
@@ -669,6 +713,168 @@ namespace Gabinet {
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Powtórz hasło:";
 			// 
+			// tabPage3
+			// 
+			this->tabPage3->Controls->Add(this->btnUUsun);
+			this->tabPage3->Controls->Add(this->btnUModyfikuj);
+			this->tabPage3->Controls->Add(this->btnUDodaj);
+			this->tabPage3->Controls->Add(this->groupBox3);
+			this->tabPage3->Controls->Add(this->dgUslugi);
+			this->tabPage3->Controls->Add(this->button5);
+			this->tabPage3->Controls->Add(this->txtUSzukaj);
+			this->tabPage3->Controls->Add(this->label14);
+			this->tabPage3->Location = System::Drawing::Point(4, 4);
+			this->tabPage3->Name = L"tabPage3";
+			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage3->Size = System::Drawing::Size(795, 532);
+			this->tabPage3->TabIndex = 2;
+			this->tabPage3->Text = L"Usuługi";
+			this->tabPage3->UseVisualStyleBackColor = true;
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(29, 26);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(43, 13);
+			this->label14->TabIndex = 0;
+			this->label14->Text = L"Zabieg:";
+			// 
+			// txtUSzukaj
+			// 
+			this->txtUSzukaj->Location = System::Drawing::Point(71, 23);
+			this->txtUSzukaj->Name = L"txtUSzukaj";
+			this->txtUSzukaj->Size = System::Drawing::Size(190, 20);
+			this->txtUSzukaj->TabIndex = 1;
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(274, 21);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(75, 23);
+			this->button5->TabIndex = 2;
+			this->button5->Text = L"Szukaj";
+			this->button5->UseVisualStyleBackColor = true;
+			// 
+			// dgUslugi
+			// 
+			this->dgUslugi->AllowUserToAddRows = false;
+			this->dgUslugi->AllowUserToOrderColumns = true;
+			this->dgUslugi->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgUslugi->Location = System::Drawing::Point(395, 6);
+			this->dgUslugi->Name = L"dgUslugi";
+			this->dgUslugi->Size = System::Drawing::Size(394, 520);
+			this->dgUslugi->TabIndex = 3;
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->txtUOpis);
+			this->groupBox3->Controls->Add(this->txtUCzas);
+			this->groupBox3->Controls->Add(this->txtUCena);
+			this->groupBox3->Controls->Add(this->txtUNazwa);
+			this->groupBox3->Controls->Add(this->label18);
+			this->groupBox3->Controls->Add(this->label17);
+			this->groupBox3->Controls->Add(this->label16);
+			this->groupBox3->Controls->Add(this->label15);
+			this->groupBox3->Location = System::Drawing::Point(14, 74);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(362, 340);
+			this->groupBox3->TabIndex = 4;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Zabiegi";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(15, 41);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(43, 13);
+			this->label15->TabIndex = 0;
+			this->label15->Text = L"Nazwa:";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(23, 67);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(35, 13);
+			this->label16->TabIndex = 1;
+			this->label16->Text = L"Cena:";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(25, 93);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(33, 13);
+			this->label17->TabIndex = 2;
+			this->label17->Text = L"Czas:";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(27, 119);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(31, 13);
+			this->label18->TabIndex = 3;
+			this->label18->Text = L"Opis:";
+			// 
+			// txtUNazwa
+			// 
+			this->txtUNazwa->Location = System::Drawing::Point(57, 38);
+			this->txtUNazwa->Name = L"txtUNazwa";
+			this->txtUNazwa->Size = System::Drawing::Size(190, 20);
+			this->txtUNazwa->TabIndex = 4;
+			// 
+			// txtUCena
+			// 
+			this->txtUCena->Location = System::Drawing::Point(57, 64);
+			this->txtUCena->Name = L"txtUCena";
+			this->txtUCena->Size = System::Drawing::Size(60, 20);
+			this->txtUCena->TabIndex = 5;
+			// 
+			// txtUCzas
+			// 
+			this->txtUCzas->Location = System::Drawing::Point(57, 90);
+			this->txtUCzas->Name = L"txtUCzas";
+			this->txtUCzas->Size = System::Drawing::Size(60, 20);
+			this->txtUCzas->TabIndex = 6;
+			// 
+			// txtUOpis
+			// 
+			this->txtUOpis->Location = System::Drawing::Point(57, 116);
+			this->txtUOpis->Multiline = true;
+			this->txtUOpis->Name = L"txtUOpis";
+			this->txtUOpis->Size = System::Drawing::Size(190, 104);
+			this->txtUOpis->TabIndex = 7;
+			// 
+			// btnUDodaj
+			// 
+			this->btnUDodaj->Location = System::Drawing::Point(14, 430);
+			this->btnUDodaj->Name = L"btnUDodaj";
+			this->btnUDodaj->Size = System::Drawing::Size(75, 23);
+			this->btnUDodaj->TabIndex = 8;
+			this->btnUDodaj->Text = L"Usuń";
+			this->btnUDodaj->UseVisualStyleBackColor = true;
+			// 
+			// btnUModyfikuj
+			// 
+			this->btnUModyfikuj->Location = System::Drawing::Point(157, 430);
+			this->btnUModyfikuj->Name = L"btnUModyfikuj";
+			this->btnUModyfikuj->Size = System::Drawing::Size(75, 23);
+			this->btnUModyfikuj->TabIndex = 9;
+			this->btnUModyfikuj->Text = L"Modyfikuj";
+			this->btnUModyfikuj->UseVisualStyleBackColor = true;
+			// 
+			// btnUUsun
+			// 
+			this->btnUUsun->Location = System::Drawing::Point(300, 430);
+			this->btnUUsun->Name = L"btnUUsun";
+			this->btnUUsun->Size = System::Drawing::Size(75, 23);
+			this->btnUUsun->TabIndex = 10;
+			this->btnUUsun->Text = L"Dodaj";
+			this->btnUUsun->UseVisualStyleBackColor = true;
+			// 
 			// Program
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -678,17 +884,22 @@ namespace Gabinet {
 			this->Name = L"Program";
 			this->Text = L"Program";
 			this->tabControl1->ResumeLayout(false);
-			this->s->ResumeLayout(false);
-			this->s->PerformLayout();
+			this->tabPage2->ResumeLayout(false);
+			this->tabPage2->PerformLayout();
 			this->gbGodziny->ResumeLayout(false);
 			this->gbGodziny->PerformLayout();
 			this->groupBox4->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUzytkownicy))->EndInit();
-			this->tabPage2->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			this->tabPage3->ResumeLayout(false);
+			this->tabPage3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUslugi))->EndInit();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
