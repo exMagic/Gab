@@ -100,9 +100,10 @@ namespace Gabinet {
 	private: System::Windows::Forms::TabPage^  tabPage3;
 
 	private: System::Windows::Forms::Button^  btnUModyfikuj;
+	private: System::Windows::Forms::GroupBox^  gbUslugi;
 
 
-	private: System::Windows::Forms::GroupBox^  groupBox3;
+
 	private: System::Windows::Forms::TextBox^  txtUOpis;
 	private: System::Windows::Forms::TextBox^  txtUCzas;
 	private: System::Windows::Forms::TextBox^  txtUCena;
@@ -112,12 +113,14 @@ namespace Gabinet {
 	private: System::Windows::Forms::Label^  label16;
 	private: System::Windows::Forms::Label^  label15;
 	private: System::Windows::Forms::DataGridView^  dgUslugi;
+
+
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::TextBox^  txtUSzukaj;
 	private: System::Windows::Forms::Label^  label14;
-private: System::Windows::Forms::Button^  btnUDodaj;
+	private: System::Windows::Forms::Button^  btnUDodaj;
 
-private: System::Windows::Forms::Button^  btnUUsun;
+	private: System::Windows::Forms::Button^  btnUUsun;
 
 
 
@@ -157,8 +160,10 @@ private: System::Windows::Forms::Button^  btnUUsun;
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->btnUDodaj = (gcnew System::Windows::Forms::Button());
+			this->btnUUsun = (gcnew System::Windows::Forms::Button());
 			this->btnUModyfikuj = (gcnew System::Windows::Forms::Button());
-			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->gbUslugi = (gcnew System::Windows::Forms::GroupBox());
 			this->txtUOpis = (gcnew System::Windows::Forms::TextBox());
 			this->txtUCzas = (gcnew System::Windows::Forms::TextBox());
 			this->txtUCena = (gcnew System::Windows::Forms::TextBox());
@@ -220,11 +225,9 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->btnUUsun = (gcnew System::Windows::Forms::Button());
-			this->btnUDodaj = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage3->SuspendLayout();
-			this->groupBox3->SuspendLayout();
+			this->gbUslugi->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUslugi))->BeginInit();
 			this->tabPage2->SuspendLayout();
 			this->gbGodziny->SuspendLayout();
@@ -252,7 +255,7 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			this->tabPage3->Controls->Add(this->btnUDodaj);
 			this->tabPage3->Controls->Add(this->btnUUsun);
 			this->tabPage3->Controls->Add(this->btnUModyfikuj);
-			this->tabPage3->Controls->Add(this->groupBox3);
+			this->tabPage3->Controls->Add(this->gbUslugi);
 			this->tabPage3->Controls->Add(this->dgUslugi);
 			this->tabPage3->Controls->Add(this->button5);
 			this->tabPage3->Controls->Add(this->txtUSzukaj);
@@ -265,31 +268,54 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			this->tabPage3->Text = L"Usuługi";
 			this->tabPage3->UseVisualStyleBackColor = true;
 			// 
+			// btnUDodaj
+			// 
+			this->btnUDodaj->Location = System::Drawing::Point(301, 430);
+			this->btnUDodaj->Name = L"btnUDodaj";
+			this->btnUDodaj->Size = System::Drawing::Size(75, 23);
+			this->btnUDodaj->TabIndex = 11;
+			this->btnUDodaj->Text = L"Dodaj";
+			this->btnUDodaj->UseVisualStyleBackColor = true;
+			this->btnUDodaj->Click += gcnew System::EventHandler(this, &Program::btnUDodaj_Click);
+			// 
+			// btnUUsun
+			// 
+			this->btnUUsun->Enabled = false;
+			this->btnUUsun->Location = System::Drawing::Point(14, 430);
+			this->btnUUsun->Name = L"btnUUsun";
+			this->btnUUsun->Size = System::Drawing::Size(75, 23);
+			this->btnUUsun->TabIndex = 10;
+			this->btnUUsun->Text = L"Usuń";
+			this->btnUUsun->UseVisualStyleBackColor = true;
+			this->btnUUsun->Click += gcnew System::EventHandler(this, &Program::btnUUsun_Click);
+			// 
 			// btnUModyfikuj
 			// 
+			this->btnUModyfikuj->Enabled = false;
 			this->btnUModyfikuj->Location = System::Drawing::Point(157, 430);
 			this->btnUModyfikuj->Name = L"btnUModyfikuj";
 			this->btnUModyfikuj->Size = System::Drawing::Size(75, 23);
 			this->btnUModyfikuj->TabIndex = 9;
 			this->btnUModyfikuj->Text = L"Modyfikuj";
 			this->btnUModyfikuj->UseVisualStyleBackColor = true;
+			this->btnUModyfikuj->Click += gcnew System::EventHandler(this, &Program::btnUModyfikuj_Click);
 			// 
-			// groupBox3
+			// gbUslugi
 			// 
-			this->groupBox3->Controls->Add(this->txtUOpis);
-			this->groupBox3->Controls->Add(this->txtUCzas);
-			this->groupBox3->Controls->Add(this->txtUCena);
-			this->groupBox3->Controls->Add(this->txtUNazwa);
-			this->groupBox3->Controls->Add(this->label18);
-			this->groupBox3->Controls->Add(this->label17);
-			this->groupBox3->Controls->Add(this->label16);
-			this->groupBox3->Controls->Add(this->label15);
-			this->groupBox3->Location = System::Drawing::Point(14, 74);
-			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(362, 340);
-			this->groupBox3->TabIndex = 4;
-			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Zabiegi";
+			this->gbUslugi->Controls->Add(this->txtUOpis);
+			this->gbUslugi->Controls->Add(this->txtUCzas);
+			this->gbUslugi->Controls->Add(this->txtUCena);
+			this->gbUslugi->Controls->Add(this->txtUNazwa);
+			this->gbUslugi->Controls->Add(this->label18);
+			this->gbUslugi->Controls->Add(this->label17);
+			this->gbUslugi->Controls->Add(this->label16);
+			this->gbUslugi->Controls->Add(this->label15);
+			this->gbUslugi->Location = System::Drawing::Point(14, 74);
+			this->gbUslugi->Name = L"gbUslugi";
+			this->gbUslugi->Size = System::Drawing::Size(362, 340);
+			this->gbUslugi->TabIndex = 4;
+			this->gbUslugi->TabStop = false;
+			this->gbUslugi->Text = L"Zabiegi";
 			// 
 			// txtUOpis
 			// 
@@ -365,6 +391,7 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			this->dgUslugi->Name = L"dgUslugi";
 			this->dgUslugi->Size = System::Drawing::Size(394, 520);
 			this->dgUslugi->TabIndex = 3;
+			this->dgUslugi->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Program::dgUslugi_CellClick);
 			// 
 			// button5
 			// 
@@ -863,25 +890,6 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Powtórz hasło:";
 			// 
-			// btnUUsun
-			// 
-			this->btnUUsun->Location = System::Drawing::Point(14, 430);
-			this->btnUUsun->Name = L"btnUUsun";
-			this->btnUUsun->Size = System::Drawing::Size(75, 23);
-			this->btnUUsun->TabIndex = 10;
-			this->btnUUsun->Text = L"Usuń";
-			this->btnUUsun->UseVisualStyleBackColor = true;
-			// 
-			// btnUDodaj
-			// 
-			this->btnUDodaj->Location = System::Drawing::Point(301, 430);
-			this->btnUDodaj->Name = L"btnUDodaj";
-			this->btnUDodaj->Size = System::Drawing::Size(75, 23);
-			this->btnUDodaj->TabIndex = 11;
-			this->btnUDodaj->Text = L"Dodaj";
-			this->btnUDodaj->UseVisualStyleBackColor = true;
-			this->btnUDodaj->Click += gcnew System::EventHandler(this, &Program::btnUDodaj_Click);
-			// 
 			// Program
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -893,8 +901,8 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage3->ResumeLayout(false);
 			this->tabPage3->PerformLayout();
-			this->groupBox3->ResumeLayout(false);
-			this->groupBox3->PerformLayout();
+			this->gbUslugi->ResumeLayout(false);
+			this->gbUslugi->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUslugi))->EndInit();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
@@ -952,26 +960,26 @@ private: System::Windows::Forms::Button^  btnUUsun;
 			MessageBox::Show(komunikat->Message);
 		}
 	}
-private: Void pokaz_siatke() {
-	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik order by nazwisko", laczBaze);
-	try
-	{
-		laczBaze->Open();
-		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
-		moja->SelectCommand = zapytanie;
-		DataTable^ tabela = gcnew DataTable();
-		moja->Fill(tabela);
+	private: Void pokaz_siatke() {
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik order by nazwisko", laczBaze);
+		try
+		{
+			laczBaze->Open();
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
 
-		BindingSource^ zrodlo = gcnew BindingSource();
-		zrodlo->DataSource = tabela;
-		dgUzytkownicy->DataSource = zrodlo;
-		laczBaze->Close();
+			BindingSource^ zrodlo = gcnew BindingSource();
+			zrodlo->DataSource = tabela;
+			dgUzytkownicy->DataSource = zrodlo;
+			laczBaze->Close();
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+		}
 	}
-	catch (Exception^ komunikat) {
-		MessageBox::Show(komunikat->Message);
-	}
-}
 	private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%" + txtPSzukaj->Text + "%' order by nazwisko", laczBaze);
@@ -1006,7 +1014,7 @@ private: Void pokaz_siatke() {
 			//odczyt i wyswietlenie godzin
 			if (chbPPracownik->Checked) {
 				MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-				MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from godziny where uzytkownik_id="+id_rekordu+"", laczBaze);
+				MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from godziny where uzytkownik_id=" + id_rekordu + "", laczBaze);
 				MySqlDataReader^ dane;
 				try
 				{
@@ -1059,22 +1067,22 @@ private: Void pokaz_siatke() {
 			polecenie->Connection = laczBaze;
 
 			polecenie->Transaction = transakcja;
-			try{
+			try {
 				//INSERT INTO UZYTKOWNIK
-				polecenie->CommandText = "insert into uzytkownik set imie='"+txtPImie->Text+"', nazwisko='"+txtPNazwisko->Text+"', uzytkownik_nazwa = '"+txtPLogin->Text+"', haslo = password('"+txtPLogin->Text+"'), pracownik = "+pracownik_typ+"";
+				polecenie->CommandText = "insert into uzytkownik set imie='" + txtPImie->Text + "', nazwisko='" + txtPNazwisko->Text + "', uzytkownik_nazwa = '" + txtPLogin->Text + "', haslo = password('" + txtPLogin->Text + "'), pracownik = " + pracownik_typ + "";
 				polecenie->ExecuteNonQuery();
 				//INSERT INTO GODZINY
 				if (chbPPracownik->Checked) {
 					polecenie->CommandText = "insert into godziny set uzytkownik_id=last_insert_id(), pon_od = '" + txtP1p->Text + "', pon_do = '" + txtP1k->Text + "', wt_od = '" + txtP2p->Text + "', wt_do = '" + txtP2k->Text + "', sr_od = '" + txtP3p->Text + "', sr_do = '" + txtP3k->Text + "', cz_od = '" + txtP4p->Text + "', cz_do = '" + txtP4k->Text + "', pt_od = '" + txtP5p->Text + "', pt_do = '" + txtP5k->Text + "', so_od = '" + txtP6p->Text + "', so_do = '" + txtP6k->Text + "'";
 					polecenie->ExecuteNonQuery();
 				}
-					transakcja->Commit();
-					powodzenie = true;
+				transakcja->Commit();
+				powodzenie = true;
 			}
 			catch (Exception^ komunikat) {
 				MessageBox::Show(komunikat->Message);
 				transakcja->Rollback();
-				
+
 			}
 			laczBaze->Close();
 
@@ -1140,13 +1148,13 @@ private: Void pokaz_siatke() {
 		pokaz_siatke();
 		if (powodzenie)MessageBox::Show("Dane uzytkownika zostały zmodyfikowane");
 	}
-private: Void wyczysc(Control^ zbior) {
-	for each(Control^ element in zbior->Controls) {
-		if (element->GetType() == TextBox::typeid){
-			element->Text = "";
+	private: Void wyczysc(Control^ zbior) {
+		for each(Control^ element in zbior->Controls) {
+			if (element->GetType() == TextBox::typeid) {
+				element->Text = "";
+			}
 		}
 	}
-}
 
 	private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^  e) {
 		//usuniecie uzytkownika
@@ -1188,69 +1196,143 @@ private: Void wyczysc(Control^ zbior) {
 
 		pokaz_siatke();
 		if (powodzenie)MessageBox::Show("Użytkownik został usunięty");
-}
-private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (chbPPracownik->Checked)	gbGodziny->Visible = true;
-	else gbGodziny->Visible = false;
-	wyczysc(gbGodziny);
-}
-//szablony godzin-------
-private: void czas_pracy(int czasStart) {
+	}
+	private: System::Void chbPPracownik_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (chbPPracownik->Checked)	gbGodziny->Visible = true;
+		else gbGodziny->Visible = false;
+		wyczysc(gbGodziny);
+	}
+			 //szablony godzin-------
+	private: void czas_pracy(int czasStart) {
 		array<TextBox^> ^ czas_start = { txtP1p, txtP2p, txtP3p ,txtP4p ,txtP5p ,txtP6p };
 		array<TextBox^> ^ czas_stop = { txtP1k, txtP2k, txtP3k ,txtP4k ,txtP5k ,txtP6k };
 		for (int i = 0; i <= 5; i++) {
 			czas_start[i]->Text = czasStart + ":00";
-			czas_stop[i]->Text = czasStart+8 + ":00";
+			czas_stop[i]->Text = czasStart + 8 + ":00";
 		}
-}
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	czas_pracy(7);
-}
-private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	czas_pracy(8);
-}
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	czas_pracy(9);
-}
-private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	czas_pracy(10);
-}
-//----------------------
-private: void pokaz_uslugi(System::Windows::Forms::TextBox^ pole, System::Windows::Forms::DataGridView^ siatka) {
-	MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from uslugi where nazwa like '%"+ pole->Text 
-		+"%'  order by nazwa", laczBaze);
-	try
-	{
-		laczBaze->Open();
-		MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
-		moja->SelectCommand = zapytanie;
-		DataTable^ tabela = gcnew DataTable();
-		moja->Fill(tabela);
-
-		BindingSource^ zrodlo = gcnew BindingSource();
-		zrodlo->DataSource = tabela;
-		siatka->DataSource = zrodlo;
-		laczBaze->Close();
 	}
-	catch (Exception^ komunikat) {
-		MessageBox::Show(komunikat->Message);
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		czas_pracy(7);
+	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		czas_pracy(8);
+	}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		czas_pracy(9);
+	}
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		czas_pracy(10);
+	}
+			 //----------------------
+	private: void pokaz_uslugi(System::Windows::Forms::TextBox^ pole, System::Windows::Forms::DataGridView^ siatka) {
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from uslugi where nazwa like '%" + pole->Text
+			+ "%'  order by nazwa", laczBaze);
+		try
+		{
+			laczBaze->Open();
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
+
+			BindingSource^ zrodlo = gcnew BindingSource();
+			zrodlo->DataSource = tabela;
+			siatka->DataSource = zrodlo;
+			laczBaze->Close();
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+		}
+
+		siatka->Columns[0]->Visible = false;
+	}
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+		pokaz_uslugi(txtUSzukaj, dgUslugi);
 	}
 
-	siatka->Columns[0]->Visible = false;
-}
-private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	pokaz_uslugi(txtUSzukaj, dgUslugi);
-}
-
-private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
-	//dodawanie usług do bazy
-	powodzenie = false;
-	if (txtUNazwa->Text->Length < 2 || txtUCena->Text->Length < 1 || txtUCzas->Text->Length < 1) {
-		MessageBox::Show("uzupełnij dane!");
+	private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
+		//dodawanie usług do bazy
+		powodzenie = false;
+		if (txtUNazwa->Text->Length < 2 || txtUCena->Text->Length < 1 || txtUCzas->Text->Length < 1) {
+			MessageBox::Show("uzupełnij dane!");
+		}
+		else {
+			uzytkownik_typ();
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+			polecenie->Connection = laczBaze;
+			polecenie->Transaction = transakcja;
+			try {
+				//INSERT INTO USLUGI
+				String^ cena = txtUCena->Text->Replace(",", ".");
+				polecenie->CommandText = "insert into uslugi set nazwa= '" + txtUNazwa->Text + "', cena= '" + cena + "', czas= '" + txtUCzas->Text + "', opis= '" + txtUOpis->Text + "'";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+				powodzenie = true;
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+			}
+			laczBaze->Close();
+		}
+		pokaz_uslugi(txtUSzukaj, dgUslugi);
+		if (powodzenie)MessageBox::Show("Usługa została dodana");
 	}
-	else {
-		uzytkownik_typ();
+	private: System::Void dgUslugi_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		//wybranie usługi
+		if (e->RowIndex >= 0) {
+			id_rekordu = Convert::ToInt32(dgUslugi->Rows[e->RowIndex]->Cells[0]->Value);
+			txtUNazwa->Text = dgUslugi->Rows[e->RowIndex]->Cells["nazwa"]->Value->ToString();
+			txtUCena->Text = dgUslugi->Rows[e->RowIndex]->Cells["cena"]->Value->ToString();
+			txtUCzas->Text = dgUslugi->Rows[e->RowIndex]->Cells["czas"]->Value->ToString();
+			txtUOpis->Text = dgUslugi->Rows[e->RowIndex]->Cells["opis"]->Value->ToString();
+
+			this->btnUModyfikuj->Enabled = true;
+			this->btnUUsun->Enabled = true;
+
+		}
+	}
+	private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
+		//modyfikacja uslugi
+		powodzenie = false;
+		if (txtUNazwa->Text->Length < 2 || txtUCena->Text->Length < 1 || txtUCzas->Text->Length < 1) {
+			MessageBox::Show("uzupełnij dane!");
+		}
+		else {
+			uzytkownik_typ();
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczBaze;
+
+			polecenie->Transaction = transakcja;
+			try {
+				String^ cena = txtUCena->Text->Replace(",", ".");
+				polecenie->CommandText = "update uslugi set nazwa='" + txtUNazwa->Text + "', cena='" + cena + "', czas = '" + txtUCzas->Text + "', opis = '" + txtUOpis->Text + "' where uslugi_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+				powodzenie = true;
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+			}
+			laczBaze->Close();
+		}
+		pokaz_uslugi(txtUSzukaj, dgUslugi);
+		if (powodzenie)MessageBox::Show("Informacje o usłudze zostały zmodyfikowane");
+	}
+	private: System::Void btnUUsun_Click(System::Object^  sender, System::EventArgs^  e) {
+		//usuniecie uslugi
+		powodzenie = false;
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 		MySqlCommand^ polecenie = laczBaze->CreateCommand();
 		MySqlTransaction^ transakcja;
@@ -1259,21 +1341,23 @@ private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs
 		polecenie->Connection = laczBaze;
 		polecenie->Transaction = transakcja;
 		try {
-			//INSERT INTO USLUGI
-			String^ cena = txtUCena->Text->Replace(",", ".");
-			polecenie->CommandText = "insert into uslugi set nazwa= '"+txtUNazwa->Text+"', cena= '" + cena + "', czas= '" + txtUCzas->Text + "', opis= '" + txtUOpis->Text + "'";
-			polecenie->ExecuteNonQuery();			
-			transakcja->Commit();
-			powodzenie = true;
+			if (MessageBox::Show("Czy na pewno chcesz usunąć wybraną usługę?", "UWAGA!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes) {
+				polecenie->CommandText = "delete from uslugi where uslugi_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+				powodzenie = true;
+			}
 		}
 		catch (Exception^ komunikat) {
 			MessageBox::Show(komunikat->Message);
 			transakcja->Rollback();
 		}
 		laczBaze->Close();
+		pokaz_uslugi(txtUSzukaj, dgUslugi);
+		wyczysc(gbUslugi);
+		if (powodzenie)MessageBox::Show("Usługa została usunięta");
 	}
-	pokaz_uslugi(txtUSzukaj, dgUslugi);
-	if (powodzenie)MessageBox::Show("Usługa została dodana");
-}
-};
+
+			 //konczonce klamry
+	};
 }
