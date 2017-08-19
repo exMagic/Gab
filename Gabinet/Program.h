@@ -121,6 +121,20 @@ namespace Gabinet {
 	private: System::Windows::Forms::Button^  btnUDodaj;
 
 	private: System::Windows::Forms::Button^  btnUUsun;
+private: System::Windows::Forms::TabPage^  tabPage4;
+private: System::Windows::Forms::TextBox^  txtPUNazwisko;
+private: System::Windows::Forms::TextBox^  txtPUImie;
+private: System::Windows::Forms::Label^  label24;
+private: System::Windows::Forms::Label^  label23;
+private: System::Windows::Forms::Label^  label22;
+private: System::Windows::Forms::DataGridView^  gdPUUslugiNowe;
+private: System::Windows::Forms::Label^  label21;
+private: System::Windows::Forms::DataGridView^  dgPUUslugi;
+private: System::Windows::Forms::Label^  label20;
+private: System::Windows::Forms::DataGridView^  dgPUPracownik;
+private: System::Windows::Forms::TextBox^  txtPUSzukaj;
+private: System::Windows::Forms::Button^  btnPUSzukaj;
+private: System::Windows::Forms::Label^  label19;
 
 
 
@@ -159,6 +173,20 @@ namespace Gabinet {
 		void InitializeComponent(void)
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
+			this->txtPUNazwisko = (gcnew System::Windows::Forms::TextBox());
+			this->txtPUImie = (gcnew System::Windows::Forms::TextBox());
+			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->gdPUUslugiNowe = (gcnew System::Windows::Forms::DataGridView());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->dgPUUslugi = (gcnew System::Windows::Forms::DataGridView());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->dgPUPracownik = (gcnew System::Windows::Forms::DataGridView());
+			this->txtPUSzukaj = (gcnew System::Windows::Forms::TextBox());
+			this->btnPUSzukaj = (gcnew System::Windows::Forms::Button());
+			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
 			this->btnUDodaj = (gcnew System::Windows::Forms::Button());
 			this->btnUUsun = (gcnew System::Windows::Forms::Button());
@@ -226,6 +254,10 @@ namespace Gabinet {
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
+			this->tabPage4->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPUUslugiNowe))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugi))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUPracownik))->BeginInit();
 			this->tabPage3->SuspendLayout();
 			this->gbUslugi->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUslugi))->BeginInit();
@@ -241,6 +273,7 @@ namespace Gabinet {
 			// tabControl1
 			// 
 			this->tabControl1->Alignment = System::Windows::Forms::TabAlignment::Bottom;
+			this->tabControl1->Controls->Add(this->tabPage4);
 			this->tabControl1->Controls->Add(this->tabPage3);
 			this->tabControl1->Controls->Add(this->tabPage2);
 			this->tabControl1->Controls->Add(this->tabPage1);
@@ -249,6 +282,145 @@ namespace Gabinet {
 			this->tabControl1->SelectedIndex = 0;
 			this->tabControl1->Size = System::Drawing::Size(803, 558);
 			this->tabControl1->TabIndex = 0;
+			// 
+			// tabPage4
+			// 
+			this->tabPage4->Controls->Add(this->txtPUNazwisko);
+			this->tabPage4->Controls->Add(this->txtPUImie);
+			this->tabPage4->Controls->Add(this->label24);
+			this->tabPage4->Controls->Add(this->label23);
+			this->tabPage4->Controls->Add(this->label22);
+			this->tabPage4->Controls->Add(this->gdPUUslugiNowe);
+			this->tabPage4->Controls->Add(this->label21);
+			this->tabPage4->Controls->Add(this->dgPUUslugi);
+			this->tabPage4->Controls->Add(this->label20);
+			this->tabPage4->Controls->Add(this->dgPUPracownik);
+			this->tabPage4->Controls->Add(this->txtPUSzukaj);
+			this->tabPage4->Controls->Add(this->btnPUSzukaj);
+			this->tabPage4->Controls->Add(this->label19);
+			this->tabPage4->Location = System::Drawing::Point(4, 4);
+			this->tabPage4->Name = L"tabPage4";
+			this->tabPage4->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage4->Size = System::Drawing::Size(795, 532);
+			this->tabPage4->TabIndex = 3;
+			this->tabPage4->Text = L"Pracownik-Usługi";
+			this->tabPage4->UseVisualStyleBackColor = true;
+			// 
+			// txtPUNazwisko
+			// 
+			this->txtPUNazwisko->Location = System::Drawing::Point(81, 116);
+			this->txtPUNazwisko->Name = L"txtPUNazwisko";
+			this->txtPUNazwisko->Size = System::Drawing::Size(100, 20);
+			this->txtPUNazwisko->TabIndex = 12;
+			// 
+			// txtPUImie
+			// 
+			this->txtPUImie->Location = System::Drawing::Point(81, 87);
+			this->txtPUImie->Name = L"txtPUImie";
+			this->txtPUImie->Size = System::Drawing::Size(100, 20);
+			this->txtPUImie->TabIndex = 11;
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Location = System::Drawing::Point(24, 116);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(56, 13);
+			this->label24->TabIndex = 10;
+			this->label24->Text = L"Nazwisko:";
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(24, 90);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(29, 13);
+			this->label23->TabIndex = 9;
+			this->label23->Text = L"Imię:";
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(24, 228);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(74, 13);
+			this->label22->TabIndex = 8;
+			this->label22->Text = L"Dodaj usługę:";
+			// 
+			// gdPUUslugiNowe
+			// 
+			this->gdPUUslugiNowe->AllowUserToAddRows = false;
+			this->gdPUUslugiNowe->AllowUserToOrderColumns = true;
+			this->gdPUUslugiNowe->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->gdPUUslugiNowe->Location = System::Drawing::Point(27, 249);
+			this->gdPUUslugiNowe->Name = L"gdPUUslugiNowe";
+			this->gdPUUslugiNowe->Size = System::Drawing::Size(360, 162);
+			this->gdPUUslugiNowe->TabIndex = 7;
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(402, 228);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(107, 13);
+			this->label21->TabIndex = 6;
+			this->label21->Text = L"Wykonywane usługi:";
+			// 
+			// dgPUUslugi
+			// 
+			this->dgPUUslugi->AllowUserToAddRows = false;
+			this->dgPUUslugi->AllowUserToOrderColumns = true;
+			this->dgPUUslugi->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgPUUslugi->Location = System::Drawing::Point(405, 249);
+			this->dgPUUslugi->Name = L"dgPUUslugi";
+			this->dgPUUslugi->Size = System::Drawing::Size(360, 162);
+			this->dgPUUslugi->TabIndex = 5;
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(402, 24);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(65, 13);
+			this->label20->TabIndex = 4;
+			this->label20->Text = L"Procownicy:";
+			// 
+			// dgPUPracownik
+			// 
+			this->dgPUPracownik->AllowUserToAddRows = false;
+			this->dgPUPracownik->AllowUserToOrderColumns = true;
+			this->dgPUPracownik->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgPUPracownik->Location = System::Drawing::Point(405, 45);
+			this->dgPUPracownik->Name = L"dgPUPracownik";
+			this->dgPUPracownik->Size = System::Drawing::Size(360, 162);
+			this->dgPUPracownik->TabIndex = 3;
+			this->dgPUPracownik->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Program::dgPUPracownik_CellClick);
+			// 
+			// txtPUSzukaj
+			// 
+			this->txtPUSzukaj->Location = System::Drawing::Point(90, 36);
+			this->txtPUSzukaj->Name = L"txtPUSzukaj";
+			this->txtPUSzukaj->Size = System::Drawing::Size(100, 20);
+			this->txtPUSzukaj->TabIndex = 2;
+			// 
+			// btnPUSzukaj
+			// 
+			this->btnPUSzukaj->Location = System::Drawing::Point(196, 34);
+			this->btnPUSzukaj->Name = L"btnPUSzukaj";
+			this->btnPUSzukaj->Size = System::Drawing::Size(75, 23);
+			this->btnPUSzukaj->TabIndex = 1;
+			this->btnPUSzukaj->Text = L"Szukaj";
+			this->btnPUSzukaj->UseVisualStyleBackColor = true;
+			this->btnPUSzukaj->Click += gcnew System::EventHandler(this, &Program::btnPUSzukaj_Click);
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(24, 39);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(60, 13);
+			this->label19->TabIndex = 0;
+			this->label19->Text = L"Pracownik:";
 			// 
 			// tabPage3
 			// 
@@ -899,6 +1071,11 @@ namespace Gabinet {
 			this->Name = L"Program";
 			this->Text = L"Program";
 			this->tabControl1->ResumeLayout(false);
+			this->tabPage4->ResumeLayout(false);
+			this->tabPage4->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPUUslugiNowe))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugi))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUPracownik))->EndInit();
 			this->tabPage3->ResumeLayout(false);
 			this->tabPage3->PerformLayout();
 			this->gbUslugi->ResumeLayout(false);
@@ -980,9 +1157,9 @@ namespace Gabinet {
 			MessageBox::Show(komunikat->Message);
 		}
 	}
-	private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: void szukaj_pracownikow(System::Windows::Forms::TextBox^ pole, System::Windows::Forms::DataGridView^ siatka) {
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%" + txtPSzukaj->Text + "%' order by nazwisko", laczBaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id, imie, nazwisko, uzytkownik_nazwa as login, pracownik FROM uzytkownik where concat(uzytkownik_nazwa, imie,' ', nazwisko) like '%" + pole->Text + "%' order by nazwisko", laczBaze);
 		try
 		{
 			laczBaze->Open();
@@ -993,13 +1170,16 @@ namespace Gabinet {
 
 			BindingSource^ zrodlo = gcnew BindingSource();
 			zrodlo->DataSource = tabela;
-			dgUzytkownicy->DataSource = zrodlo;
+			siatka->DataSource = zrodlo;
 			laczBaze->Close();
 		}
 		catch (Exception^ komunikat) {
 			MessageBox::Show(komunikat->Message);
 		}
+	}
 
+	private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+		szukaj_pracownikow(txtPSzukaj, dgUzytkownicy);
 		dgUzytkownicy->Columns[0]->Visible = false;
 	}
 	private: System::Void dgUzytkownicy_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
@@ -1359,5 +1539,54 @@ namespace Gabinet {
 	}
 
 			 //konczonce klamry
-	};
+	private: System::Void btnPUSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+		szukaj_pracownikow(txtPUSzukaj, dgPUPracownik);
+	}
+private: System::Void dgPUPracownik_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+	//Wyszukanie uslug ktore wykonuje pracownik
+	if (e->RowIndex >= 0) {
+		id_rekordu = Convert::ToInt32(dgPUPracownik->Rows[e->RowIndex]->Cells[0]->Value);
+		txtPUImie->Text = dgPUPracownik->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
+		txtPUNazwisko->Text = dgPUPracownik->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
+
+		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uslugi.uslugi_id, uslugi.nazwa, uslugi.cena, uslugi.czas from uslugi, uzytkownik_usluga where uslugi.uslugi_id = uzytkownik_usluga.uslugi_id and uzytkownik_usluga.uzytkownik_id = " + id_rekordu + " order by nazwa;" , laczBaze);
+		try
+		{
+			laczBaze->Open();
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
+
+			BindingSource^ zrodlo = gcnew BindingSource();
+			zrodlo->DataSource = tabela;
+			dgPUUslugi->DataSource = zrodlo;
+			laczBaze->Close();
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+		}
+
+		zapytanie = gcnew MySqlCommand("SELECT * from uslugi order by nazwa;", laczBaze);
+		try
+		{
+			laczBaze->Open();
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
+
+			BindingSource^ zrodlo = gcnew BindingSource();
+			zrodlo->DataSource = tabela;
+			gdPUUslugiNowe->DataSource = zrodlo;
+			laczBaze->Close();
+		}
+		catch (Exception^ komunikat) {
+			MessageBox::Show(komunikat->Message);
+		}
+
+	}
+}
+};
 }
