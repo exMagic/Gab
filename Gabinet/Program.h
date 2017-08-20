@@ -121,20 +121,21 @@ namespace Gabinet {
 	private: System::Windows::Forms::Button^  btnUDodaj;
 
 	private: System::Windows::Forms::Button^  btnUUsun;
-private: System::Windows::Forms::TabPage^  tabPage4;
-private: System::Windows::Forms::TextBox^  txtPUNazwisko;
-private: System::Windows::Forms::TextBox^  txtPUImie;
-private: System::Windows::Forms::Label^  label24;
-private: System::Windows::Forms::Label^  label23;
-private: System::Windows::Forms::Label^  label22;
-private: System::Windows::Forms::DataGridView^  gdPUUslugiNowe;
-private: System::Windows::Forms::Label^  label21;
-private: System::Windows::Forms::DataGridView^  dgPUUslugi;
-private: System::Windows::Forms::Label^  label20;
-private: System::Windows::Forms::DataGridView^  dgPUPracownik;
-private: System::Windows::Forms::TextBox^  txtPUSzukaj;
-private: System::Windows::Forms::Button^  btnPUSzukaj;
-private: System::Windows::Forms::Label^  label19;
+	private: System::Windows::Forms::TabPage^  tabPage4;
+	private: System::Windows::Forms::TextBox^  txtPUNazwisko;
+	private: System::Windows::Forms::TextBox^  txtPUImie;
+	private: System::Windows::Forms::Label^  label24;
+	private: System::Windows::Forms::Label^  label23;
+	private: System::Windows::Forms::Label^  label22;
+	private: System::Windows::Forms::DataGridView^  dgPUUslugiNowe;
+
+	private: System::Windows::Forms::Label^  label21;
+	private: System::Windows::Forms::DataGridView^  dgPUUslugi;
+	private: System::Windows::Forms::Label^  label20;
+	private: System::Windows::Forms::DataGridView^  dgPUPracownik;
+	private: System::Windows::Forms::TextBox^  txtPUSzukaj;
+	private: System::Windows::Forms::Button^  btnPUSzukaj;
+	private: System::Windows::Forms::Label^  label19;
 
 
 
@@ -179,7 +180,7 @@ private: System::Windows::Forms::Label^  label19;
 			this->label24 = (gcnew System::Windows::Forms::Label());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->gdPUUslugiNowe = (gcnew System::Windows::Forms::DataGridView());
+			this->dgPUUslugiNowe = (gcnew System::Windows::Forms::DataGridView());
 			this->label21 = (gcnew System::Windows::Forms::Label());
 			this->dgPUUslugi = (gcnew System::Windows::Forms::DataGridView());
 			this->label20 = (gcnew System::Windows::Forms::Label());
@@ -255,7 +256,7 @@ private: System::Windows::Forms::Label^  label19;
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->tabPage4->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPUUslugiNowe))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugiNowe))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugi))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUPracownik))->BeginInit();
 			this->tabPage3->SuspendLayout();
@@ -290,7 +291,7 @@ private: System::Windows::Forms::Label^  label19;
 			this->tabPage4->Controls->Add(this->label24);
 			this->tabPage4->Controls->Add(this->label23);
 			this->tabPage4->Controls->Add(this->label22);
-			this->tabPage4->Controls->Add(this->gdPUUslugiNowe);
+			this->tabPage4->Controls->Add(this->dgPUUslugiNowe);
 			this->tabPage4->Controls->Add(this->label21);
 			this->tabPage4->Controls->Add(this->dgPUUslugi);
 			this->tabPage4->Controls->Add(this->label20);
@@ -347,15 +348,16 @@ private: System::Windows::Forms::Label^  label19;
 			this->label22->TabIndex = 8;
 			this->label22->Text = L"Dodaj usługę:";
 			// 
-			// gdPUUslugiNowe
+			// dgPUUslugiNowe
 			// 
-			this->gdPUUslugiNowe->AllowUserToAddRows = false;
-			this->gdPUUslugiNowe->AllowUserToOrderColumns = true;
-			this->gdPUUslugiNowe->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->gdPUUslugiNowe->Location = System::Drawing::Point(27, 249);
-			this->gdPUUslugiNowe->Name = L"gdPUUslugiNowe";
-			this->gdPUUslugiNowe->Size = System::Drawing::Size(360, 162);
-			this->gdPUUslugiNowe->TabIndex = 7;
+			this->dgPUUslugiNowe->AllowUserToAddRows = false;
+			this->dgPUUslugiNowe->AllowUserToOrderColumns = true;
+			this->dgPUUslugiNowe->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgPUUslugiNowe->Location = System::Drawing::Point(27, 249);
+			this->dgPUUslugiNowe->Name = L"dgPUUslugiNowe";
+			this->dgPUUslugiNowe->Size = System::Drawing::Size(360, 162);
+			this->dgPUUslugiNowe->TabIndex = 7;
+			this->dgPUUslugiNowe->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Program::gdPUUslugiNowe_CellClick);
 			// 
 			// label21
 			// 
@@ -375,6 +377,7 @@ private: System::Windows::Forms::Label^  label19;
 			this->dgPUUslugi->Name = L"dgPUUslugi";
 			this->dgPUUslugi->Size = System::Drawing::Size(360, 162);
 			this->dgPUUslugi->TabIndex = 5;
+			this->dgPUUslugi->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Program::dgPUUslugi_CellClick);
 			// 
 			// label20
 			// 
@@ -1073,7 +1076,7 @@ private: System::Windows::Forms::Label^  label19;
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage4->ResumeLayout(false);
 			this->tabPage4->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPUUslugiNowe))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugiNowe))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugi))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUPracownik))->EndInit();
 			this->tabPage3->ResumeLayout(false);
@@ -1099,6 +1102,7 @@ private: System::Windows::Forms::Label^  label19;
 		//edklaracja zmiennych
 		int id_rekordu; //wybranie rekordu na którym pracuję - zmienna dla wszystkich siatek
 		int pracownik_typ;
+		int id_usluga; //wybranie uslugi
 
 	private: Void btnHZmien_pokaz() {
 		if (txtHStare->Text != "" && txtHNowe1->Text != "" && txtHNowe2->Text == txtHNowe1->Text) {
@@ -1541,16 +1545,12 @@ private: System::Windows::Forms::Label^  label19;
 			 //konczonce klamry
 	private: System::Void btnPUSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 		szukaj_pracownikow(txtPUSzukaj, dgPUPracownik);
+		dgPUPracownik->Columns[0]->Visible = false;
 	}
-private: System::Void dgPUPracownik_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-	//Wyszukanie uslug ktore wykonuje pracownik
-	if (e->RowIndex >= 0) {
-		id_rekordu = Convert::ToInt32(dgPUPracownik->Rows[e->RowIndex]->Cells[0]->Value);
-		txtPUImie->Text = dgPUPracownik->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
-		txtPUNazwisko->Text = dgPUPracownik->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
 
+	private: void pokaz_uslugi() {
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uslugi.uslugi_id, uslugi.nazwa, uslugi.cena, uslugi.czas from uslugi, uzytkownik_usluga where uslugi.uslugi_id = uzytkownik_usluga.uslugi_id and uzytkownik_usluga.uzytkownik_id = " + id_rekordu + " order by nazwa;" , laczBaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uslugi.uslugi_id, uslugi.nazwa, uslugi.cena, uslugi.czas from uslugi, uzytkownik_usluga where uslugi.uslugi_id = uzytkownik_usluga.uslugi_id and uzytkownik_usluga.uzytkownik_id = " + id_rekordu + " order by nazwa;", laczBaze);
 		try
 		{
 			laczBaze->Open();
@@ -1567,26 +1567,103 @@ private: System::Void dgPUPracownik_CellClick(System::Object^  sender, System::W
 		catch (Exception^ komunikat) {
 			MessageBox::Show(komunikat->Message);
 		}
-
-		zapytanie = gcnew MySqlCommand("SELECT * from uslugi order by nazwa;", laczBaze);
-		try
-		{
-			laczBaze->Open();
-			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
-			moja->SelectCommand = zapytanie;
-			DataTable^ tabela = gcnew DataTable();
-			moja->Fill(tabela);
-
-			BindingSource^ zrodlo = gcnew BindingSource();
-			zrodlo->DataSource = tabela;
-			gdPUUslugiNowe->DataSource = zrodlo;
-			laczBaze->Close();
-		}
-		catch (Exception^ komunikat) {
-			MessageBox::Show(komunikat->Message);
-		}
-
+		dgPUUslugi->Columns[0]->Visible = false;
 	}
-}
-};
+
+	private: System::Void dgPUPracownik_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		//Wyszukanie uslug ktore wykonuje pracownik
+		if (e->RowIndex >= 0) {
+			id_rekordu = Convert::ToInt32(dgPUPracownik->Rows[e->RowIndex]->Cells[0]->Value);
+			txtPUImie->Text = dgPUPracownik->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
+			txtPUNazwisko->Text = dgPUPracownik->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
+
+			pokaz_uslugi();
+
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from uslugi order by nazwa;", laczBaze);
+			try
+			{
+				laczBaze->Open();
+				MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+				moja->SelectCommand = zapytanie;
+				DataTable^ tabela = gcnew DataTable();
+				moja->Fill(tabela);
+
+				BindingSource^ zrodlo = gcnew BindingSource();
+				zrodlo->DataSource = tabela;
+				dgPUUslugiNowe->DataSource = zrodlo;
+				laczBaze->Close();
+				dgPUUslugiNowe->Columns[0]->Visible = false;
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+			}
+
+		}
+	}
+	private: System::Void gdPUUslugiNowe_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		//Dodanie nowej usługi do usług wykonywanych przez pracownika
+		if (e->RowIndex >= 0) {
+			id_usluga = Convert::ToInt32(dgPUUslugiNowe->Rows[e->RowIndex]->Cells[0]->Value);
+
+			if (MessageBox::Show("Czy chcesz dodać nową usługę pracownikowi?", "Uwaga!", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+
+				MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				MySqlCommand^ polecenie = laczBaze->CreateCommand();
+				MySqlTransaction^ transakcja;
+				laczBaze->Open();
+				transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+				polecenie->Connection = laczBaze;
+				polecenie->Transaction = transakcja;
+				try {
+
+					polecenie->CommandText = "insert into uzytkownik_usluga set uzytkownik_id = " + id_rekordu + ", uslugi_id=" + id_usluga + "; ";
+					polecenie->ExecuteNonQuery();
+					transakcja->Commit();
+					powodzenie = true;
+				}
+				catch (Exception^ komunikat) {
+					MessageBox::Show(komunikat->Message);
+					transakcja->Rollback();
+				}
+				laczBaze->Close();
+				pokaz_uslugi();
+				if (powodzenie)MessageBox::Show("Usługa została przypisana do usług pracownika");
+
+			}
+		}
+	}
+	private: System::Void dgPUUslugi_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		//Usuwanie usługi z listy wykonywanych uslug przez pracownika
+		if (e->RowIndex >= 0) {
+			id_usluga = Convert::ToInt32(dgPUUslugi->Rows[e->RowIndex]->Cells[0]->Value);
+
+			if (MessageBox::Show("Czy chcesz usunąć usługę pracownikowi?", "Uwaga!", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+
+				MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				MySqlCommand^ polecenie = laczBaze->CreateCommand();
+				MySqlTransaction^ transakcja;
+				laczBaze->Open();
+				transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+				polecenie->Connection = laczBaze;
+				polecenie->Transaction = transakcja;
+				try {
+
+					polecenie->CommandText = "delete from uzytkownik_usluga where uzytkownik_id = " + id_rekordu + " and uslugi_id=" + id_usluga + "; ";
+					polecenie->ExecuteNonQuery();
+					transakcja->Commit();
+					powodzenie = true;
+				}
+				catch (Exception^ komunikat) {
+					MessageBox::Show(komunikat->Message);
+					transakcja->Rollback();
+				}
+				laczBaze->Close();
+				pokaz_uslugi();
+				if (powodzenie)MessageBox::Show("Usługa została usunięta z usług pracownika");
+
+			}
+		}
+	}
+	};
 }
