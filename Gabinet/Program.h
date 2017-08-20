@@ -136,6 +136,40 @@ namespace Gabinet {
 	private: System::Windows::Forms::TextBox^  txtPUSzukaj;
 	private: System::Windows::Forms::Button^  btnPUSzukaj;
 	private: System::Windows::Forms::Label^  label19;
+private: System::Windows::Forms::TabPage^  tabPage5;
+private: System::Windows::Forms::Button^  btnKDodaj;
+private: System::Windows::Forms::GroupBox^  gbKlienci;
+private: System::Windows::Forms::MaskedTextBox^  txtKKod;
+private: System::Windows::Forms::TextBox^  txtKMiejscowosc;
+
+
+private: System::Windows::Forms::Label^  label30;
+private: System::Windows::Forms::Label^  label31;
+private: System::Windows::Forms::TextBox^  txtKNumer;
+
+private: System::Windows::Forms::Label^  label32;
+private: System::Windows::Forms::TextBox^  txtKUlica;
+
+private: System::Windows::Forms::Label^  label33;
+private: System::Windows::Forms::TextBox^  txtKTelefon;
+
+private: System::Windows::Forms::Label^  label29;
+private: System::Windows::Forms::TextBox^  txtKEmail;
+
+private: System::Windows::Forms::Label^  label28;
+private: System::Windows::Forms::TextBox^  txtKNazwisko;
+
+
+private: System::Windows::Forms::Label^  label27;
+private: System::Windows::Forms::TextBox^  txtKImie;
+
+private: System::Windows::Forms::Label^  label26;
+private: System::Windows::Forms::Button^  btnKModyfikuj;
+private: System::Windows::Forms::DataGridView^  dgKlienci;
+private: System::Windows::Forms::Button^  btnKUsun;
+private: System::Windows::Forms::Button^  btnKSzukaj;
+private: System::Windows::Forms::TextBox^  txtKSzukaj;
+private: System::Windows::Forms::Label^  label25;
 
 
 
@@ -254,6 +288,31 @@ namespace Gabinet {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtHNowe1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
+			this->label25 = (gcnew System::Windows::Forms::Label());
+			this->txtKSzukaj = (gcnew System::Windows::Forms::TextBox());
+			this->btnKSzukaj = (gcnew System::Windows::Forms::Button());
+			this->dgKlienci = (gcnew System::Windows::Forms::DataGridView());
+			this->gbKlienci = (gcnew System::Windows::Forms::GroupBox());
+			this->label26 = (gcnew System::Windows::Forms::Label());
+			this->txtKImie = (gcnew System::Windows::Forms::TextBox());
+			this->txtKNazwisko = (gcnew System::Windows::Forms::TextBox());
+			this->label27 = (gcnew System::Windows::Forms::Label());
+			this->txtKEmail = (gcnew System::Windows::Forms::TextBox());
+			this->label28 = (gcnew System::Windows::Forms::Label());
+			this->txtKTelefon = (gcnew System::Windows::Forms::TextBox());
+			this->label29 = (gcnew System::Windows::Forms::Label());
+			this->txtKMiejscowosc = (gcnew System::Windows::Forms::TextBox());
+			this->label30 = (gcnew System::Windows::Forms::Label());
+			this->label31 = (gcnew System::Windows::Forms::Label());
+			this->txtKNumer = (gcnew System::Windows::Forms::TextBox());
+			this->label32 = (gcnew System::Windows::Forms::Label());
+			this->txtKUlica = (gcnew System::Windows::Forms::TextBox());
+			this->label33 = (gcnew System::Windows::Forms::Label());
+			this->btnKUsun = (gcnew System::Windows::Forms::Button());
+			this->btnKModyfikuj = (gcnew System::Windows::Forms::Button());
+			this->btnKDodaj = (gcnew System::Windows::Forms::Button());
+			this->txtKKod = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->tabControl1->SuspendLayout();
 			this->tabPage4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPUUslugiNowe))->BeginInit();
@@ -269,11 +328,15 @@ namespace Gabinet {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUzytkownicy))->BeginInit();
 			this->tabPage1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			this->tabPage5->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgKlienci))->BeginInit();
+			this->gbKlienci->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// tabControl1
 			// 
 			this->tabControl1->Alignment = System::Windows::Forms::TabAlignment::Bottom;
+			this->tabControl1->Controls->Add(this->tabPage5);
 			this->tabControl1->Controls->Add(this->tabPage4);
 			this->tabControl1->Controls->Add(this->tabPage3);
 			this->tabControl1->Controls->Add(this->tabPage2);
@@ -1065,6 +1128,240 @@ namespace Gabinet {
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Powtórz hasło:";
 			// 
+			// tabPage5
+			// 
+			this->tabPage5->Controls->Add(this->btnKDodaj);
+			this->tabPage5->Controls->Add(this->gbKlienci);
+			this->tabPage5->Controls->Add(this->btnKModyfikuj);
+			this->tabPage5->Controls->Add(this->dgKlienci);
+			this->tabPage5->Controls->Add(this->btnKUsun);
+			this->tabPage5->Controls->Add(this->btnKSzukaj);
+			this->tabPage5->Controls->Add(this->txtKSzukaj);
+			this->tabPage5->Controls->Add(this->label25);
+			this->tabPage5->Location = System::Drawing::Point(4, 4);
+			this->tabPage5->Name = L"tabPage5";
+			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage5->Size = System::Drawing::Size(795, 532);
+			this->tabPage5->TabIndex = 4;
+			this->tabPage5->Text = L"Klienci";
+			this->tabPage5->UseVisualStyleBackColor = true;
+			// 
+			// label25
+			// 
+			this->label25->AutoSize = true;
+			this->label25->Location = System::Drawing::Point(44, 36);
+			this->label25->Name = L"label25";
+			this->label25->Size = System::Drawing::Size(36, 13);
+			this->label25->TabIndex = 0;
+			this->label25->Text = L"Klient:";
+			// 
+			// txtKSzukaj
+			// 
+			this->txtKSzukaj->Location = System::Drawing::Point(86, 33);
+			this->txtKSzukaj->Name = L"txtKSzukaj";
+			this->txtKSzukaj->Size = System::Drawing::Size(137, 20);
+			this->txtKSzukaj->TabIndex = 1;
+			// 
+			// btnKSzukaj
+			// 
+			this->btnKSzukaj->Location = System::Drawing::Point(229, 30);
+			this->btnKSzukaj->Name = L"btnKSzukaj";
+			this->btnKSzukaj->Size = System::Drawing::Size(75, 23);
+			this->btnKSzukaj->TabIndex = 2;
+			this->btnKSzukaj->Text = L"Szukaj";
+			this->btnKSzukaj->UseVisualStyleBackColor = true;
+			// 
+			// dgKlienci
+			// 
+			this->dgKlienci->AllowUserToAddRows = false;
+			this->dgKlienci->AllowUserToOrderColumns = true;
+			this->dgKlienci->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgKlienci->Location = System::Drawing::Point(26, 84);
+			this->dgKlienci->Name = L"dgKlienci";
+			this->dgKlienci->Size = System::Drawing::Size(744, 192);
+			this->dgKlienci->TabIndex = 3;
+			// 
+			// gbKlienci
+			// 
+			this->gbKlienci->Controls->Add(this->txtKKod);
+			this->gbKlienci->Controls->Add(this->txtKMiejscowosc);
+			this->gbKlienci->Controls->Add(this->label30);
+			this->gbKlienci->Controls->Add(this->label31);
+			this->gbKlienci->Controls->Add(this->txtKNumer);
+			this->gbKlienci->Controls->Add(this->label32);
+			this->gbKlienci->Controls->Add(this->txtKUlica);
+			this->gbKlienci->Controls->Add(this->label33);
+			this->gbKlienci->Controls->Add(this->txtKTelefon);
+			this->gbKlienci->Controls->Add(this->label29);
+			this->gbKlienci->Controls->Add(this->txtKEmail);
+			this->gbKlienci->Controls->Add(this->label28);
+			this->gbKlienci->Controls->Add(this->txtKNazwisko);
+			this->gbKlienci->Controls->Add(this->label27);
+			this->gbKlienci->Controls->Add(this->txtKImie);
+			this->gbKlienci->Controls->Add(this->label26);
+			this->gbKlienci->Location = System::Drawing::Point(29, 299);
+			this->gbKlienci->Name = L"gbKlienci";
+			this->gbKlienci->Size = System::Drawing::Size(740, 188);
+			this->gbKlienci->TabIndex = 4;
+			this->gbKlienci->TabStop = false;
+			this->gbKlienci->Text = L"Edycja danych klienta:";
+			// 
+			// label26
+			// 
+			this->label26->AutoSize = true;
+			this->label26->Location = System::Drawing::Point(15, 40);
+			this->label26->Name = L"label26";
+			this->label26->Size = System::Drawing::Size(29, 13);
+			this->label26->TabIndex = 0;
+			this->label26->Text = L"Imię:";
+			// 
+			// txtKImie
+			// 
+			this->txtKImie->Location = System::Drawing::Point(74, 37);
+			this->txtKImie->Name = L"txtKImie";
+			this->txtKImie->Size = System::Drawing::Size(100, 20);
+			this->txtKImie->TabIndex = 1;
+			// 
+			// txtKNazwisko
+			// 
+			this->txtKNazwisko->Location = System::Drawing::Point(74, 63);
+			this->txtKNazwisko->Name = L"txtKNazwisko";
+			this->txtKNazwisko->Size = System::Drawing::Size(100, 20);
+			this->txtKNazwisko->TabIndex = 3;
+			// 
+			// label27
+			// 
+			this->label27->AutoSize = true;
+			this->label27->Location = System::Drawing::Point(15, 66);
+			this->label27->Name = L"label27";
+			this->label27->Size = System::Drawing::Size(56, 13);
+			this->label27->TabIndex = 2;
+			this->label27->Text = L"Nazwisko:";
+			// 
+			// txtKEmail
+			// 
+			this->txtKEmail->Location = System::Drawing::Point(74, 89);
+			this->txtKEmail->Name = L"txtKEmail";
+			this->txtKEmail->Size = System::Drawing::Size(100, 20);
+			this->txtKEmail->TabIndex = 5;
+			// 
+			// label28
+			// 
+			this->label28->AutoSize = true;
+			this->label28->Location = System::Drawing::Point(15, 92);
+			this->label28->Name = L"label28";
+			this->label28->Size = System::Drawing::Size(34, 13);
+			this->label28->TabIndex = 4;
+			this->label28->Text = L"email:";
+			// 
+			// txtKTelefon
+			// 
+			this->txtKTelefon->Location = System::Drawing::Point(74, 115);
+			this->txtKTelefon->Name = L"txtKTelefon";
+			this->txtKTelefon->Size = System::Drawing::Size(100, 20);
+			this->txtKTelefon->TabIndex = 7;
+			// 
+			// label29
+			// 
+			this->label29->AutoSize = true;
+			this->label29->Location = System::Drawing::Point(15, 118);
+			this->label29->Name = L"label29";
+			this->label29->Size = System::Drawing::Size(39, 13);
+			this->label29->TabIndex = 6;
+			this->label29->Text = L"telefon";
+			// 
+			// txtKMiejscowosc
+			// 
+			this->txtKMiejscowosc->Location = System::Drawing::Point(282, 115);
+			this->txtKMiejscowosc->Name = L"txtKMiejscowosc";
+			this->txtKMiejscowosc->Size = System::Drawing::Size(100, 20);
+			this->txtKMiejscowosc->TabIndex = 15;
+			// 
+			// label30
+			// 
+			this->label30->AutoSize = true;
+			this->label30->Location = System::Drawing::Point(204, 118);
+			this->label30->Name = L"label30";
+			this->label30->Size = System::Drawing::Size(70, 13);
+			this->label30->TabIndex = 14;
+			this->label30->Text = L"miejscowość:";
+			// 
+			// label31
+			// 
+			this->label31->AutoSize = true;
+			this->label31->Location = System::Drawing::Point(204, 92);
+			this->label31->Name = L"label31";
+			this->label31->Size = System::Drawing::Size(76, 13);
+			this->label31->TabIndex = 12;
+			this->label31->Text = L"kod pocztowy:";
+			// 
+			// txtKNumer
+			// 
+			this->txtKNumer->Location = System::Drawing::Point(282, 63);
+			this->txtKNumer->Name = L"txtKNumer";
+			this->txtKNumer->Size = System::Drawing::Size(100, 20);
+			this->txtKNumer->TabIndex = 11;
+			// 
+			// label32
+			// 
+			this->label32->AutoSize = true;
+			this->label32->Location = System::Drawing::Point(204, 66);
+			this->label32->Name = L"label32";
+			this->label32->Size = System::Drawing::Size(39, 13);
+			this->label32->TabIndex = 10;
+			this->label32->Text = L"numer:";
+			// 
+			// txtKUlica
+			// 
+			this->txtKUlica->Location = System::Drawing::Point(282, 37);
+			this->txtKUlica->Name = L"txtKUlica";
+			this->txtKUlica->Size = System::Drawing::Size(100, 20);
+			this->txtKUlica->TabIndex = 9;
+			// 
+			// label33
+			// 
+			this->label33->AutoSize = true;
+			this->label33->Location = System::Drawing::Point(204, 40);
+			this->label33->Name = L"label33";
+			this->label33->Size = System::Drawing::Size(32, 13);
+			this->label33->TabIndex = 8;
+			this->label33->Text = L"ulica:";
+			// 
+			// btnKUsun
+			// 
+			this->btnKUsun->Location = System::Drawing::Point(103, 493);
+			this->btnKUsun->Name = L"btnKUsun";
+			this->btnKUsun->Size = System::Drawing::Size(75, 23);
+			this->btnKUsun->TabIndex = 16;
+			this->btnKUsun->Text = L"usuń";
+			this->btnKUsun->UseVisualStyleBackColor = true;
+			// 
+			// btnKModyfikuj
+			// 
+			this->btnKModyfikuj->Location = System::Drawing::Point(208, 493);
+			this->btnKModyfikuj->Name = L"btnKModyfikuj";
+			this->btnKModyfikuj->Size = System::Drawing::Size(75, 23);
+			this->btnKModyfikuj->TabIndex = 17;
+			this->btnKModyfikuj->Text = L"modyfikuj";
+			this->btnKModyfikuj->UseVisualStyleBackColor = true;
+			// 
+			// btnKDodaj
+			// 
+			this->btnKDodaj->Location = System::Drawing::Point(314, 493);
+			this->btnKDodaj->Name = L"btnKDodaj";
+			this->btnKDodaj->Size = System::Drawing::Size(75, 23);
+			this->btnKDodaj->TabIndex = 18;
+			this->btnKDodaj->Text = L"dodaj";
+			this->btnKDodaj->UseVisualStyleBackColor = true;
+			// 
+			// txtKKod
+			// 
+			this->txtKKod->Location = System::Drawing::Point(282, 89);
+			this->txtKKod->Mask = L"00-999";
+			this->txtKKod->Name = L"txtKKod";
+			this->txtKKod->Size = System::Drawing::Size(100, 20);
+			this->txtKKod->TabIndex = 16;
+			// 
 			// Program
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1095,6 +1392,11 @@ namespace Gabinet {
 			this->tabPage1->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			this->tabPage5->ResumeLayout(false);
+			this->tabPage5->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgKlienci))->EndInit();
+			this->gbKlienci->ResumeLayout(false);
+			this->gbKlienci->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
