@@ -136,40 +136,40 @@ namespace Gabinet {
 	private: System::Windows::Forms::TextBox^  txtPUSzukaj;
 	private: System::Windows::Forms::Button^  btnPUSzukaj;
 	private: System::Windows::Forms::Label^  label19;
-private: System::Windows::Forms::TabPage^  tabPage5;
-private: System::Windows::Forms::Button^  btnKDodaj;
-private: System::Windows::Forms::GroupBox^  gbKlienci;
-private: System::Windows::Forms::MaskedTextBox^  txtKKod;
-private: System::Windows::Forms::TextBox^  txtKMiejscowosc;
+	private: System::Windows::Forms::TabPage^  tabPage5;
+	private: System::Windows::Forms::Button^  btnKDodaj;
+	private: System::Windows::Forms::GroupBox^  gbKlienci;
+	private: System::Windows::Forms::MaskedTextBox^  txtKKod;
+	private: System::Windows::Forms::TextBox^  txtKMiejscowosc;
 
 
-private: System::Windows::Forms::Label^  label30;
-private: System::Windows::Forms::Label^  label31;
-private: System::Windows::Forms::TextBox^  txtKNumer;
+	private: System::Windows::Forms::Label^  label30;
+	private: System::Windows::Forms::Label^  label31;
+	private: System::Windows::Forms::TextBox^  txtKNumer;
 
-private: System::Windows::Forms::Label^  label32;
-private: System::Windows::Forms::TextBox^  txtKUlica;
+	private: System::Windows::Forms::Label^  label32;
+	private: System::Windows::Forms::TextBox^  txtKUlica;
 
-private: System::Windows::Forms::Label^  label33;
-private: System::Windows::Forms::TextBox^  txtKTelefon;
+	private: System::Windows::Forms::Label^  label33;
+	private: System::Windows::Forms::TextBox^  txtKTelefon;
 
-private: System::Windows::Forms::Label^  label29;
-private: System::Windows::Forms::TextBox^  txtKEmail;
+	private: System::Windows::Forms::Label^  label29;
+	private: System::Windows::Forms::TextBox^  txtKEmail;
 
-private: System::Windows::Forms::Label^  label28;
-private: System::Windows::Forms::TextBox^  txtKNazwisko;
+	private: System::Windows::Forms::Label^  label28;
+	private: System::Windows::Forms::TextBox^  txtKNazwisko;
 
 
-private: System::Windows::Forms::Label^  label27;
-private: System::Windows::Forms::TextBox^  txtKImie;
+	private: System::Windows::Forms::Label^  label27;
+	private: System::Windows::Forms::TextBox^  txtKImie;
 
-private: System::Windows::Forms::Label^  label26;
-private: System::Windows::Forms::Button^  btnKModyfikuj;
-private: System::Windows::Forms::DataGridView^  dgKlienci;
-private: System::Windows::Forms::Button^  btnKUsun;
-private: System::Windows::Forms::Button^  btnKSzukaj;
-private: System::Windows::Forms::TextBox^  txtKSzukaj;
-private: System::Windows::Forms::Label^  label25;
+	private: System::Windows::Forms::Label^  label26;
+	private: System::Windows::Forms::Button^  btnKModyfikuj;
+	private: System::Windows::Forms::DataGridView^  dgKlienci;
+	private: System::Windows::Forms::Button^  btnKUsun;
+	private: System::Windows::Forms::Button^  btnKSzukaj;
+	private: System::Windows::Forms::TextBox^  txtKSzukaj;
+	private: System::Windows::Forms::Label^  label25;
 
 
 
@@ -406,7 +406,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->txtKKod->Mask = L"00-999";
 			this->txtKKod->Name = L"txtKKod";
 			this->txtKKod->Size = System::Drawing::Size(100, 20);
-			this->txtKKod->TabIndex = 16;
+			this->txtKKod->TabIndex = 13;
 			// 
 			// txtKMiejscowosc
 			// 
@@ -537,6 +537,8 @@ private: System::Windows::Forms::Label^  label25;
 			this->btnKModyfikuj->TabIndex = 17;
 			this->btnKModyfikuj->Text = L"modyfikuj";
 			this->btnKModyfikuj->UseVisualStyleBackColor = true;
+			this->btnKModyfikuj->Visible = false;
+			this->btnKModyfikuj->Click += gcnew System::EventHandler(this, &Program::btnKModyfikuj_Click);
 			// 
 			// dgKlienci
 			// 
@@ -547,6 +549,7 @@ private: System::Windows::Forms::Label^  label25;
 			this->dgKlienci->Name = L"dgKlienci";
 			this->dgKlienci->Size = System::Drawing::Size(744, 192);
 			this->dgKlienci->TabIndex = 3;
+			this->dgKlienci->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Program::dgKlienci_CellClick);
 			// 
 			// btnKUsun
 			// 
@@ -556,6 +559,8 @@ private: System::Windows::Forms::Label^  label25;
 			this->btnKUsun->TabIndex = 16;
 			this->btnKUsun->Text = L"usuń";
 			this->btnKUsun->UseVisualStyleBackColor = true;
+			this->btnKUsun->Visible = false;
+			this->btnKUsun->Click += gcnew System::EventHandler(this, &Program::btnKUsun_Click);
 			// 
 			// btnKSzukaj
 			// 
@@ -1638,7 +1643,7 @@ private: System::Windows::Forms::Label^  label25;
 	}
 	private: Void wyczysc(Control^ zbior) {
 		for each(Control^ element in zbior->Controls) {
-			if (element->GetType() == TextBox::typeid) {
+			if (element->GetType() == TextBox::typeid || element->GetType()==MaskedTextBox::typeid) {
 				element->Text = "";
 			}
 		}
@@ -1997,14 +2002,96 @@ private: System::Windows::Forms::Label^  label25;
 		dgKlienci->Columns["modyfikacja"]->Visible = false;
 
 	}
-private: System::Void btnKDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
-	//dodawanie klienta do bazy
-	powodzenie = false;
-	if (txtKImie->Text->Length < 2 || txtKNazwisko->Text->Length < 2) {
-		MessageBox::Show("uzupełnij dane!");
+	private: System::Void btnKDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
+		//dodawanie klienta do bazy
+		powodzenie = false;
+		if (txtKImie->Text->Length < 2 || txtKNazwisko->Text->Length < 2) {
+			MessageBox::Show("uzupełnij dane!");
+		}
+		else {
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczBaze;
+
+			polecenie->Transaction = transakcja;
+			try {
+				//INSERT INTO KLIENCI
+				polecenie->CommandText = "insert into klienci set imie='" + txtKImie->Text + "', nazwisko='" + txtKNazwisko->Text + "', email ='" + txtKEmail->Text + "', telefon ='" + txtKTelefon->Text + "',  ulica ='" + txtKUlica->Text + "', numer ='" + txtKNumer->Text + "', miejscowosc ='" + txtKMiejscowosc->Text + "', poczta ='" + txtKKod->Text + "' ";
+				polecenie->ExecuteNonQuery();
+
+				transakcja->Commit();
+				powodzenie = true;
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+
+			}
+			laczBaze->Close();
+
+		}
+		szukaj_klientow(txtKSzukaj, dgKlienci);
+		if (powodzenie)MessageBox::Show("Klient: " + txtKImie->Text + " " + txtKNazwisko->Text + " został Dodany");
 	}
-	else {
-		uzytkownik_typ();
+	private: System::Void dgKlienci_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		//Wybor klienta
+		if (e->RowIndex >= 0) {
+			id_rekordu = Convert::ToInt32(dgKlienci->Rows[e->RowIndex]->Cells[0]->Value);
+			txtKImie->Text = dgKlienci->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
+			txtKNazwisko->Text = dgKlienci->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
+			txtKEmail->Text = dgKlienci->Rows[e->RowIndex]->Cells["email"]->Value->ToString();
+			txtKTelefon->Text = dgKlienci->Rows[e->RowIndex]->Cells["telefon"]->Value->ToString();
+			txtKUlica->Text = dgKlienci->Rows[e->RowIndex]->Cells["ulica"]->Value->ToString();
+			txtKNumer->Text = dgKlienci->Rows[e->RowIndex]->Cells["numer"]->Value->ToString();
+			txtKMiejscowosc->Text = dgKlienci->Rows[e->RowIndex]->Cells["miejscowosc"]->Value->ToString();
+			txtKKod->Text = dgKlienci->Rows[e->RowIndex]->Cells["poczta"]->Value->ToString();
+
+			btnKModyfikuj->Visible = true;
+			btnKUsun->Visible = true;
+		}
+	}
+	private: System::Void btnKModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
+		//modyfikacja danych klienta 
+		powodzenie = false;
+		if (txtKImie->Text->Length < 2 || txtKNazwisko->Text->Length < 2) {
+			MessageBox::Show("uzupełnij dane!");
+		}
+		else {
+			MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+			laczBaze->Open();
+			transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczBaze;
+
+			polecenie->Transaction = transakcja;
+			try {
+
+				polecenie->CommandText = "update klienci set imie='" + txtKImie->Text + "', nazwisko='" + txtKNazwisko->Text + "', email ='" + txtKEmail->Text + "', telefon ='" + txtKTelefon->Text + "',  ulica ='" + txtKUlica->Text + "', numer ='" + txtKNumer->Text + "', miejscowosc ='" + txtKMiejscowosc->Text + "', poczta ='" + txtKKod->Text + "' where klienci_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+
+				transakcja->Commit();
+				powodzenie = true;
+			}
+			catch (Exception^ komunikat) {
+				MessageBox::Show(komunikat->Message);
+				transakcja->Rollback();
+
+			}
+			laczBaze->Close();
+
+		}
+		szukaj_klientow(txtKSzukaj, dgKlienci);
+		if (powodzenie)MessageBox::Show("Dane klienta: " + txtKImie->Text + " " + txtKNazwisko->Text + " został pomyślnie zmodyfikowane");
+	}
+	private: System::Void btnKUsun_Click(System::Object^  sender, System::EventArgs^  e) {
+		//usuwanie klienta 
+		powodzenie = false;
 		MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 		MySqlCommand^ polecenie = laczBaze->CreateCommand();
 		MySqlTransaction^ transakcja;
@@ -2015,12 +2102,13 @@ private: System::Void btnKDodaj_Click(System::Object^  sender, System::EventArgs
 
 		polecenie->Transaction = transakcja;
 		try {
-			//INSERT INTO KLIENCI
-			polecenie->CommandText = "insert into klienci set imie='" + txtKImie->Text + "', nazwisko='" + txtKNazwisko->Text + "', email ='"+txtKEmail->Text+"', telefon ='" + txtKTelefon->Text + "',  ulica ='" + txtKUlica->Text + "', numer ='" + txtKNumer->Text + "', miejscowosc ='" + txtKMiejscowosc->Text + "', poczta ='" + txtKKod->Text + "' ";
-			polecenie->ExecuteNonQuery();
-		
-			transakcja->Commit();
-			powodzenie = true;
+			if (MessageBox::Show("Czy napewno mam usunąć klienta " + txtKImie->Text + " " + txtKNazwisko->Text +"?", "Uwaga!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes) {
+				polecenie->CommandText = "delete from klienci where klienci_id = " + id_rekordu + "; ";
+				polecenie->ExecuteNonQuery();
+
+				transakcja->Commit();
+				powodzenie = true;
+			}
 		}
 		catch (Exception^ komunikat) {
 			MessageBox::Show(komunikat->Message);
@@ -2029,9 +2117,9 @@ private: System::Void btnKDodaj_Click(System::Object^  sender, System::EventArgs
 		}
 		laczBaze->Close();
 
+		wyczysc(gbKlienci);
+		szukaj_klientow(txtKSzukaj, dgKlienci);
+		if (powodzenie)MessageBox::Show("Klient: " + txtKImie->Text + " " + txtKNazwisko->Text + " został usunięty");
 	}
-	pokaz_siatke();
-	if (powodzenie)MessageBox::Show("Klient: "+txtKImie->Text+" "+txtKNazwisko->Text+" został Dodany");
-}
-};
+	};
 }
