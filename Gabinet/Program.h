@@ -1643,7 +1643,7 @@ namespace Gabinet {
 	}
 	private: Void wyczysc(Control^ zbior) {
 		for each(Control^ element in zbior->Controls) {
-			if (element->GetType() == TextBox::typeid || element->GetType()==MaskedTextBox::typeid) {
+			if (element->GetType() == TextBox::typeid || element->GetType() == MaskedTextBox::typeid) {
 				element->Text = "";
 			}
 		}
@@ -2102,7 +2102,7 @@ namespace Gabinet {
 
 		polecenie->Transaction = transakcja;
 		try {
-			if (MessageBox::Show("Czy napewno mam usunąć klienta " + txtKImie->Text + " " + txtKNazwisko->Text +"?", "Uwaga!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes) {
+			if (MessageBox::Show("Czy napewno mam usunąć klienta " + txtKImie->Text + " " + txtKNazwisko->Text + "?", "Uwaga!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes) {
 				polecenie->CommandText = "delete from klienci where klienci_id = " + id_rekordu + "; ";
 				polecenie->ExecuteNonQuery();
 
